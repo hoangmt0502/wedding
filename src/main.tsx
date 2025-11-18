@@ -13,7 +13,6 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { SidebarProvider } from "./context/SidebarProvider";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import "swiper/css";
@@ -36,7 +35,6 @@ const AppWrapper = () => {
         <GlobalScrollbarStyles />
         <CssBaseline />
         <AlertModalProvider>
-          <SidebarProvider>
             <Container
               maxWidth={false}
               disableGutters
@@ -50,7 +48,6 @@ const AppWrapper = () => {
               <RouterProvider router={router} />
             </Container>
             <ToastContainer />
-          </SidebarProvider>
         </AlertModalProvider>
       </ThemeProvider>
     </LocalizationProvider>
