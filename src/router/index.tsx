@@ -6,6 +6,6 @@ import Home from "../pages/Home";
 export default createBrowserRouter([
   {
     element: <Home />,
-    errorElement: <ErrorPage />,
+    errorElement: <Home />,
   },
 ]);
