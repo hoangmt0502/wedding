@@ -13,12 +13,10 @@ import {
 import storage from 'redux-persist/lib/storage'; // localStorage
 
 
-import userReducer from './slices/userSlice';
 import themeReducer from './slices/themeSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const rootReducer = combineReducers({
-  user: userReducer,
   theme: themeReducer,
 });
 
