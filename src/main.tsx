@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import { Container } from "@mui/system";
-import "./firebase/config";
 import { AlertModalProvider } from "./context/AlertModal";
 import { ThemeProvider } from "@mui/material/styles";
 import { ToastContainer } from "react-toastify";
