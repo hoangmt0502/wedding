@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { IMAGE_FLOWER } from "../constants/common";
 
 type Props = {
   images: string[];            // particle images (hearts/flowers...)
@@ -178,10 +179,13 @@ export default function WeddingFallingImages({
     };
 
     // initial populations (caps for performance)
-    const MAX_TOTAL = 200;
-    const layerBack: Particle[] = Array.from({ length: 24 }, () => createParticle(0.6, 0.45));
-    const layerMid: Particle[] = Array.from({ length: 38 }, () => createParticle(1.0, 1.0));
-    const layerFront: Particle[] = Array.from({ length: 28 }, () => createParticle(1.4, 1.6));
+    // back: mostly sparkles (if exist)
+    const backCount = 12;
+    const midCount = 28;   // flowers
+    const frontCount = 10; // hearts (fewer)
+    const layerBack: Particle[] = Array.from({ length: backCount }, () => createParticle(0.55, 0.35));
+    const layerMid: Particle[] = Array.from({ length: midCount }, () => createParticle(1.0, 1.0));
+    const layerFront: Particle[] = Array.from({ length: frontCount }, () => createParticle(1.4, 1.4));
     const layers = [layerBack, layerMid, layerFront];
 
     // bursts & sparkles & doves arrays
@@ -200,7 +204,7 @@ export default function WeddingFallingImages({
           y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed + 0.5,
-          img: loadedImgs[images[Math.floor(Math.random() * images.length)]],
+          img: loadedImgs[IMAGE_FLOWER] || loadedImgs[images[0]],
           size: rand(18, 42),
           life: 1.0,
           angle: Math.random() * Math.PI * 2,
@@ -443,7 +447,7 @@ export default function WeddingFallingImages({
         spawnBurst(rand(60, W - 60), rand(-30, 40));
         burstTimer = 0;
       }
-      if (enableDoves && doveTimer > 8000 - bassLevelRef.current * 3000) {
+      if (enableDoves && doveTimer > 12000 - bassLevelRef.current * 6000) {
         spawnDove();
         doveTimer = 0;
       }

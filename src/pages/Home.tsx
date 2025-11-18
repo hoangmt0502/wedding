@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import WeddingFallingImages from "../components/WeddingFallingImages";
-import { LIST_IMAGES_FALLING } from "../constants/common";
+import { IMAGE_DOVE, LIST_IMAGES_FALLING } from "../constants/common";
 
 export default function Home() {
   return (
@@ -12,13 +12,15 @@ export default function Home() {
         </Stack>
         <WeddingFallingImages
           images={LIST_IMAGES_FALLING}
-          doveImage="/img/dove.png"
+          doveImage={IMAGE_DOVE}
           musicUrl="/audio/song.mp3"     // optional, để sync bass
           enableGlitter={true}
-          enableFireworks={true}
+          enableFireworks={false}       // khuyên: bật sparingly (burst gây đông)
           enableDoves={true}
           enableBokeh={true}
           enableSync={true}
+          slowMotion={false}
+          zIndex={9999}
         />
 
 
