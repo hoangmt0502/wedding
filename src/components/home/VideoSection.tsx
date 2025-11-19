@@ -19,7 +19,7 @@ export default function VideoSection() {
           <Typography
             sx={{
               fontSize: { xs: "2rem", md: "3rem" },
-              fontFamily: "'Dancing Script', cursive",
+              fontFamily: "'Fleur De Leah', cursive",
               fontWeight: 600,
               mb: 1,
             }}
