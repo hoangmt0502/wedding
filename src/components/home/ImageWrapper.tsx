@@ -1,17 +1,31 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
+import { useContentWidth } from "../../hooks/useContentWidth";
 
-export default function ImageWrapper({src, children} : {src: string; children: ReactNode}) {
-  const backgroundImageUrl = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('${src}')`; 
-  //                              ^----- Lớp phủ đen mờ (0.4 là độ trong suốt 40%)
+export default function ImageWrapper({
+  src, 
+  children, 
+  isCompactWidth = false, 
+  height = 850,
+  opacity = 0.1
+} : {
+  src: string; 
+  children: ReactNode; 
+  isCompactWidth?: boolean; 
+  height?: number | string;
+  opacity?: number;
+}) {
+  const {mainWidth, compactWidth} = useContentWidth();
+  const backgroundImageUrl = `linear-gradient(rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity})), url('${src}')`; 
   return (
     <Box 
       sx={{
         backgroundImage: `url('${src}')`,
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         width: '100%',
-        height: 850,
+        height: height,
         display: 'flex', 
         justifyContent: 'center',
       }}
@@ -19,11 +33,11 @@ export default function ImageWrapper({src, children} : {src: string; children: R
       <Box
         sx={{
         backgroundImage: backgroundImageUrl,
-        backgroundSize: 'fill', 
+        backgroundSize: 'cover', 
         backgroundPosition: 'center',
-        width: 1200,
+        backgroundRepeat: 'no-repeat',
+        width: isCompactWidth ? compactWidth : mainWidth,
         height: '100%',
-        // boxShadow: '4px 0 10px rgba(0, 0, 0, 0.1), -4px 0 10px rgba(0, 0, 0, 0.1)'
       }}
       >
         {children}
