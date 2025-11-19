@@ -5,7 +5,7 @@ import { PlayCircleOutline } from "@mui/icons-material";
 
 export default function VideoSection() {
   return (
-    <ImageWrapper src="https://tuart.net/wp-content/uploads/2022/01/270284502_1589108414821889_2158477857562109361_n.jpg" opacity={0.4} height={700}>
+    <ImageWrapper src="https://tuart.net/wp-content/uploads/2022/01/270284502_1589108414821889_2158477857562109361_n.jpg" opacity={0.4} height={700} isCompactWidth>
       <Box width={'100%'} height={'100%'} display={'flex'} flexDirection={'row'} justifyContent={'center'} alignItems={'center'}>
         <Box
           sx={{
