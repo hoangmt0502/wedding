@@ -4,6 +4,7 @@ import { IMAGE_DOVE, LIST_IMAGES_FALLING } from "../constants/common";
 import TopSection from "../components/home/TopSection";
 import StorySection from "../components/home/StorySection";
 import VideoSection from "../components/home/VideoSection";
+import ProfileSection from "../components/home/ProfileSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <TopSection />
         <StorySection />
         <VideoSection />
+        <ProfileSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}
