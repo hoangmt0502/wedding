@@ -5,6 +5,7 @@ import TopSection from "../components/home/TopSection";
 import StorySection from "../components/home/StorySection";
 import VideoSection from "../components/home/VideoSection";
 import ProfileSection from "../components/home/ProfileSection";
+import MusicPlayerFloating from "../components/MusicPlayerFloating";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         slowMotion={false}
         zIndex={9999}
       />
+      <MusicPlayerFloating />
     </>
   );
 }
