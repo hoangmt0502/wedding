@@ -175,10 +175,10 @@ export default function ProfileSection() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <Paper sx={{ p: 2, borderRadius: 2, height: "100%" }}>
+              <Paper sx={{ p: 2, borderRadius: 1, height: "100%" }}>
                 <Box sx={{
                   border: '1px solid #747474ff',
-                  borderRadius: 2,
+                  borderRadius: 1,
                   p: 2
                 }}>
                   <Box sx={{ display: 'flex', justifyContent: "center", mb: 2 }}>
