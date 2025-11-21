@@ -8,25 +8,24 @@ const globalStyles = `
 }
 
 @keyframes pulseMusic {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.18); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
 }
 
 @keyframes ripple {
-  0% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  70% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { transform: scale(1); opacity: 0.4; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes pinkGlow {
+  0% { box-shadow: 0 0 0px rgba(255, 77, 143, 0.4); }
+  50% { box-shadow: 0 0 28px rgba(255, 77, 143, 0.75); }
+  100% { box-shadow: 0 0 0px rgba(255, 77, 143, 0.4); }
 }
 `;
+
 
 export default function MusicPlayerFloating() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -78,14 +77,16 @@ export default function MusicPlayerFloating() {
           height: 60,
           borderRadius: "50%",
           background: "#fff",
-          boxShadow: "0 8px 22px rgba(0,0,0,0.2)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
           zIndex: 9999,
-          transition: "transform 0.2s ease",
           overflow: "visible",
+          transition: "transform 0.2s ease",
+          animation: playing
+            ? "pinkGlow 2s infinite ease-in-out"
+            : "none",
           "&:hover": {
             transform: "scale(1.08)",
           },
@@ -107,15 +108,12 @@ export default function MusicPlayerFloating() {
 
         {/* ICON SVG */}
         {playing ? (
-          <Box>
+          <Box sx={{
+            animation: playing ? "pulseMusic 2s infinite ease-in-out" : "none",
+            display: "flex",
+          }}>
             {/* PLAY ICON */}
-            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"
-              style={{
-                animation: "rotateMusic 2.4s linear infinite",
-                display: "block",
-                transformOrigin: "center center",
-              }}
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
               <g
                 fill="none"
                 stroke="#ff4d8f"

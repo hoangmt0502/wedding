@@ -17,7 +17,6 @@ import SharedImage from "../SharedImage";
 interface ProfileItem {
   id: number;
   name: string;
-  role: string;
   image: string;
   text: string;
 }
@@ -32,14 +31,12 @@ const PROFILES: ProfileItem[] = [
   {
     id: 1,
     name: "Xuân Thịnh",
-    role: "Chân dung chú rể",
     image: "https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg",
     text: `Xuất thân từ mảnh đất Nghệ An nhiều nắng gió. Lên Hà Nội học tập và làm việc từ năm 2012...`,
   },
   {
     id: 2,
     name: "Diễm Hằng",
-    role: "Chân dung cô dâu",
     image: "https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527",
     text: `Hằng, một cô gái nhỏ xinh đến từ Bắc Giang...`,
   },
@@ -178,25 +175,26 @@ export default function ProfileSection() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <Paper sx={{ p: 3, borderRadius: 2, height: "100%" }}>
-                <Typography variant="h5" fontWeight={600} gutterBottom>
-                  {p.name}
-                </Typography>
-
-                <Typography
-                  variant="subtitle2"
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  {p.role}
-                </Typography>
-
-                <Typography
-                  variant="body1"
-                  sx={{ mt: 2, lineHeight: 1.8, whiteSpace: "pre-line" }}
-                >
-                  {p.text}
-                </Typography>
+              <Paper sx={{ p: 2, borderRadius: 2, height: "100%" }}>
+                <Box sx={{
+                  border: '1px solid #747474ff',
+                  borderRadius: 2,
+                  p: 2
+                }}>
+                  <Box sx={{ display: 'flex', justifyContent: "center", mb: 2 }}>
+                    <SharedImage src="/images/story_icon.png" alt="decor" width={150} height={80} variant="cover"/>
+                  </Box>
+                  <Typography variant="h5" fontWeight={600} gutterBottom>
+                    {p.name}
+                  </Typography>
+  
+                  <Typography
+                    variant="body1"
+                    sx={{ mt: 2, lineHeight: 1.6, textAlign: 'justify' }}
+                  >
+                    {p.text}
+                  </Typography>
+                </Box>
               </Paper>
             </Grid>
           </Grid>
