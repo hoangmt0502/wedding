@@ -1,26 +1,22 @@
 export const getContentWidth = (windowWidth: number) => {
   let mainWidth = 0;
 
-  // xs: mobile nhỏ
-  if (windowWidth < 480) mainWidth = windowWidth - 24;
+  // xs: < 600
+  if (windowWidth < 600) mainWidth = windowWidth - 24;
 
-  // sm: mobile lớn
-  else if (windowWidth < 768) mainWidth = 480 - 48;
+  // sm: < 900
+  else if (windowWidth < 900) mainWidth = 600 - 48;     // 552
 
-  // md: tablet nhỏ
-  else if (windowWidth < 1024) mainWidth = 768 - 96;
+  // md: < 1200
+  else if (windowWidth < 1200) mainWidth = 900 - 96;    // 804
 
-  // lg: tablet lớn / desktop nhỏ
-  else if (windowWidth < 1440) mainWidth = 960;
+  // lg: < 1536
+  else if (windowWidth < 1536) mainWidth = 1200;        // container wide
 
-  // xl: desktop rộng
-  else if (windowWidth < 1920) mainWidth = 1200;
+  // xl: >= 1536
+  else mainWidth = 1440;                                // max container
 
-  // xxl: ultra-wide
-  else mainWidth = 1440;
-
-  // 👇 width nhỏ hơn (ví dụ 85% hoặc tuỳ chỉnh)
-  const compactWidth = Math.round(mainWidth * 0.85);
+  const compactWidth = Math.round(mainWidth * 0.8);
 
   return {
     mainWidth,

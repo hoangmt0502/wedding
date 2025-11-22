@@ -20,7 +20,7 @@ export default function StorySection() {
         spacing={1}
         sx={{
           width: compactWidth,
-          px: 8
+          px: 4
         }}
       >
         {/* LEFT: STORY */}

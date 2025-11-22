@@ -8,6 +8,7 @@ import {
   Stack,
   Tabs,
   Tab,
+  Divider,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -175,22 +176,76 @@ export default function ProfileSection() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <Paper sx={{ p: 2, borderRadius: 1, height: "100%" }}>
-                <Box sx={{
-                  border: '1px solid #747474ff',
-                  borderRadius: 1,
-                  p: 2
-                }}>
-                  <Box sx={{ display: 'flex', justifyContent: "center", mb: 2 }}>
-                    <SharedImage src="/images/story_icon.png" alt="decor" width={150} height={80} variant="cover"/>
+              <Paper
+                sx={{
+                  p: 2.5,
+                  borderRadius: 2,
+                  height: "100%",
+                  background: "rgba(255,255,255,0.9)",
+                  backdropFilter: "blur(6px)",
+                  boxShadow: "0 8px 28px rgba(0,0,0,0.08)",
+                  position: "relative",
+                }}
+              >
+                <Box
+                  sx={{
+                    border: "1px solid #b3b3b3",
+                    borderRadius: 2,
+                    p: 3,
+                    height: "100%",
+                    position: "relative",
+                    background: "linear-gradient(180deg, #ffffffee, #fffafaff)",
+                  }}
+                >
+                  {/* Decor bo góc nhẹ */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      pointerEvents: "none",
+                      backgroundImage: `url('/images/decor_corner.png')`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "top left, top right, bottom left, bottom right",
+                      opacity: 0.12,
+                    }}
+                  />
+
+                  {/* Icon hoa trên cùng */}
+                  <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+                    <SharedImage
+                      src="/images/story_icon.png"
+                      alt="decor"
+                      width={150}
+                      height={80}
+                      variant="cover"
+                    />
                   </Box>
-                  <Typography variant="h5" fontWeight={600} gutterBottom>
+
+                  {/* Tên – sang trọng hơn */}
+                  <Typography
+                    variant="h4"
+                    fontWeight={600}
+                    sx={{
+                      textAlign: "center",
+                      fontFamily: "'Playfair Display', serif",
+                      color: "#444",
+                      mb: 1,
+                    }}
+                  >
                     {p.name}
                   </Typography>
-  
+
+                  {/* Nội dung */}
                   <Typography
                     variant="body1"
-                    sx={{ mt: 2, lineHeight: 1.6, textAlign: 'justify' }}
+                    sx={{
+                      mt: 2,
+                      lineHeight: 1.6,
+                      textAlign: "justify",
+                      color: "rgba(0,0,0,0.82)",
+                      fontSize: "1.08rem",
+                      fontFamily: "'Noto Serif', serif",
+                    }}
                   >
                     {p.text}
                   </Typography>
