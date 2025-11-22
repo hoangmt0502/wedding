@@ -10,10 +10,9 @@ import {
   Tab,
   Divider,
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
+import { Icon } from '@iconify/react';
 
 interface ProfileItem {
   id: number;
@@ -221,19 +220,32 @@ export default function ProfileSection() {
                     />
                   </Box>
 
-                  {/* Tên – sang trọng hơn */}
-                  <Typography
-                    variant="h4"
-                    fontWeight={600}
-                    sx={{
-                      textAlign: "center",
-                      fontFamily: "'Playfair Display', serif",
-                      color: "#444",
-                      mb: 1,
+                 <Box 
+                    sx={{ 
+                      display: "flex", 
+                      justifyContent: "center", 
+                      alignItems: "center", 
+                      gap: 1.5, 
+                      mb: 2 
                     }}
                   >
-                    {p.name}
-                  </Typography>
+                    <Icon icon="mdi:flower" width={26} color="#c07b85" />
+                    
+                    <Typography
+                      variant="h4"
+                      fontWeight={600}
+                      sx={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: "#444",
+                      }}
+                    >
+                      {p.name}
+                    </Typography>
+
+                    <Icon icon="mdi:flower" width={26} color="#c07b85" />
+                  </Box>
+
+
 
                   {/* Nội dung */}
                   <Typography
