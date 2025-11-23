@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
+import { PLAYLIST } from "../constants/common";
 
 const globalStyles = `
 @keyframes rotateMusic {
@@ -29,11 +30,16 @@ const globalStyles = `
 
 export default function MusicPlayerFloating() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(true); // fake play
+  const [playing, setPlaying] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(() =>
+    Math.floor(Math.random() * PLAYLIST.length)
+  );
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
+    audio.src = PLAYLIST[currentIndex];
 
     const tryPlay = async () => {
       try {
@@ -48,6 +54,21 @@ export default function MusicPlayerFloating() {
     window.addEventListener("click", tryPlay, { once: true });
     window.addEventListener("touchstart", tryPlay, { once: true });
     window.addEventListener("wheel", tryPlay, { once: true });
+
+    return () => audio.pause();
+  }, [currentIndex]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleEnded = () => {
+      const next = Math.floor(Math.random() * PLAYLIST.length);
+      setCurrentIndex(next);
+    };
+
+    audio.addEventListener("ended", handleEnded);
+    return () => audio.removeEventListener("ended", handleEnded);
   }, []);
 
   const toggle = () => {
@@ -139,7 +160,7 @@ export default function MusicPlayerFloating() {
         )}
       </Box>
 
-      <audio ref={audioRef} src="/audio/ngay_dau_tien.mp3" loop playsInline />
+      <audio ref={audioRef} loop={false} playsInline />
     </>
   );
 }
