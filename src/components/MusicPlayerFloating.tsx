@@ -58,18 +58,25 @@ export default function MusicPlayerFloating() {
     return () => audio.pause();
   }, [currentIndex]);
 
+  // Khi bài hát kết thúc → random bài khác
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const handleEnded = () => {
-      const next = Math.floor(Math.random() * PLAYLIST.length);
+      let next = currentIndex;
+
+      // Random cho đến khi khác bài hiện tại
+      while (next === currentIndex && PLAYLIST.length > 1) {
+        next = Math.floor(Math.random() * PLAYLIST.length);
+      }
+
       setCurrentIndex(next);
     };
 
     audio.addEventListener("ended", handleEnded);
     return () => audio.removeEventListener("ended", handleEnded);
-  }, []);
+  }, [currentIndex]);
 
   const toggle = () => {
     const audio = audioRef.current;
