@@ -7,10 +7,11 @@ import VideoSection from "../components/home/VideoSection";
 import ProfileSection from "../components/home/ProfileSection";
 import MusicPlayerFloating from "../components/MusicPlayerFloating";
 import CollectionSection from "../components/home/CollectionSection";
+import WeddingWelcomeGate from "../components/WeddingWelcomeGate";
 
 export default function Home() {
   return (
-    <>
+    <WeddingWelcomeGate>
       <Box>
         <TopSection />
         <StorySection />
@@ -30,6 +31,6 @@ export default function Home() {
         zIndex={9999}
       />
       <MusicPlayerFloating />
-    </>
+    </WeddingWelcomeGate>
   );
 }

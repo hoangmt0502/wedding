@@ -30,7 +30,7 @@ const globalStyles = `
 
 export default function MusicPlayerFloating() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(() =>
     Math.floor(Math.random() * PLAYLIST.length)
   );
@@ -44,11 +44,14 @@ export default function MusicPlayerFloating() {
     const tryPlay = async () => {
       try {
         await audio.play();
+        setPlaying(true);
         console.log("Audio started after user gesture");
       } catch (err) {
         console.log("play blocked:", err);
       }
     };
+
+    tryPlay();
 
     window.addEventListener("scroll", tryPlay, { once: true });
     window.addEventListener("click", tryPlay, { once: true });

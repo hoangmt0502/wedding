@@ -59,7 +59,7 @@ const CollectionSection = () => {
           <Box sx={{ flex: 0.37, display: "flex", flexDirection: "column", gap: 2, justifyContent: 'center' }}>
             {COLLECTION_LEFT.map((src, idx) => (
               <Box
-                key={src}
+                key={src + idx}
                 sx={{
                   width: "100%",
                   borderRadius: 2,
@@ -80,7 +80,7 @@ const CollectionSection = () => {
           <Box sx={{ flex: 0.63, display: "flex", flexDirection: "column", gap: 2 }}>
             {COLLECTION_RIGHT.map((src, idx) => (
               <Box
-                key={src}
+                key={src + idx}
                 style={{
                   width: "100%",
                   height: "auto",
