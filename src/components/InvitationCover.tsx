@@ -3,15 +3,23 @@ import { Box, Typography, Fade } from "@mui/material";
 
 export default function InvitationCover({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
+  const [t, setT] = useState(0);
 
   useEffect(() => {
-    const loop = setInterval(() => {
-      setStage(prev => (prev === 2 ? 0 : (prev + 1) as 0 | 1 | 2));
-    }, 500); // thời gian đổi frame (điều chỉnh được)
-
+    const loop = setInterval(() => setT(v => v + 1), 18); // tốc độ nhịp (điều chỉnh được)
     return () => clearInterval(loop);
   }, []);
+
+  // 🔥 Disable scroll sau khi mở thiệp
+  useEffect(() => {
+    document.body.style.overflow = !open ? "hidden" : "auto";
+    window.scrollTo({ top: 0, behavior: "instant" }); // về đầu trang ngay
+    return () => { document.body.style.overflow = "auto"; };
+  }, [open]);
+
+  // chuyển động dạng sóng mềm
+  const offset = Math.sin(t / 18) * 12;   // biên độ + độ mềm (càng lớn càng nhún nhiều)
+  const shadow = Math.sin(t / 18) * 20;   // bóng thay đổi tương ứng
 
   return (
     <>
@@ -22,7 +30,9 @@ export default function InvitationCover({ children }: { children: React.ReactNod
             position: "fixed",
             inset: 0,
             overflowY: "auto",
-            background: "#faf6f2",
+            // background: "#faf6f2",
+            background: "url('/images/bg_welcome.png') center/contain repeat",
+            // backgroundSize: 'cover',
             textAlign: "center",
             fontFamily: "serif",
             cursor: "pointer",
@@ -40,7 +50,7 @@ export default function InvitationCover({ children }: { children: React.ReactNod
             sx={{
               fontSize: 22,
               mt: 2,
-              mb: 5,
+              mb: 3,
               color: "#6b3a36",
               fontWeight: 600,
               letterSpacing: 2,
@@ -52,51 +62,54 @@ export default function InvitationCover({ children }: { children: React.ReactNod
           {/* ===== NAME PAIR ===== */}
           <Box sx={{ display: "flex", justifyContent: "center", gap: 4, alignItems: "center" }}>
             <Typography sx={{ fontFamily: "'Great Vibes',cursive", fontSize: 42, color: "#443" }}>
-              Mai Anh
+              Minh Hoàng
             </Typography>
             <Typography sx={{ fontSize: 34, opacity: 0.6 }}>&</Typography>
             <Typography sx={{ fontFamily: "'Great Vibes',cursive", fontSize: 42, color: "#443" }}>
-              Quốc Huy
+              Khánh Huyền
             </Typography>
           </Box>
 
           {/* SONG HỶ */}
           <Box
             sx={{
-              width: 70,
-              height: 70,
+              width: 160,
+              height: 160,
               mx: "auto",
-              mt: 2.5,
+              mt: 2,
               background: "url('/images/song_hi.png') center/contain no-repeat",
               opacity: 0.95,
             }}
           />
 
-          {/* ===== ENVELOPE (ĐỎ) ===== */}
-          <Box sx={{ mt: 4, pb: 6 }}>
+          {/* ===== ENVELOPE ===== */}
+          <Box sx={{mt: -6, position: "relative", display: 'flex', justifyContent: 'center' }}>
             <Box
               sx={{
-                width: 350,
+                width: 600,
                 aspectRatio: "1.48/1",
                 background: "url('/images/envelope.png') center/contain no-repeat",
                 borderRadius: "6px",
-                transition: "transform 1.4s ease, filter .8s ease, box-shadow 1.4s ease",
+                transform: `translateY(${offset}px)`,
+                transition: "transform 0.4s ease-out",
+              }}
+            />
 
-                // === 3 FRAME giống hình bạn đưa ===
-                transform:
-                  stage === 0 ? "translateY(0px)" :
-                  stage === 1 ? "translateY(-14px)" :
-                                "translateY(-28px)",
-
-                boxShadow:
-                  stage === 0 ? "0 25px 45px rgba(0,0,0,.20)" :
-                  stage === 1 ? "0 32px 65px rgba(0,0,0,.28)" :
-                                "0 45px 85px rgba(0,0,0,.38)",
-
-                filter:
-                  stage === 2 ? "brightness(.95)" :
-                  stage === 1 ? "brightness(.98)" :
-                                "brightness(1)",
+            {/* BÓNG MỊN – NHỊP THEO CHUYỂN ĐỘNG */}
+            <Box
+              sx={{
+                width: 400,
+                height: 30,
+                position: "absolute",
+                bottom: -24,
+                left: "50%",
+                borderRadius: "50%",
+                filter: "blur(10px)",
+                opacity: 0.5,
+                background: "rgba(0,0,0,.38)",
+                transformOrigin: "center",
+                transform: `translateX(-50%) scale(${1 + shadow / 90})`, // <<< FIX CHÍNH
+                transition: "transform 0.4s ease-out",
               }}
             />
           </Box>
@@ -104,12 +117,11 @@ export default function InvitationCover({ children }: { children: React.ReactNod
           {/* ===== CLICK LABEL ===== */}
           <Typography
             sx={{
-              mt: 6,
-              mb: 3,
-              fontSize: 18,
-              opacity: 0.65,
+              fontSize: 20,
+              opacity: 0.85,
               fontStyle: "italic",
               fontFamily: "'Dancing Script', cursive",
+              fontWeight: 700
             }}
           >
             Chạm để mở thiệp
@@ -117,21 +129,17 @@ export default function InvitationCover({ children }: { children: React.ReactNod
         </Box>
       )}
 
-      {/* ─── PAGE HIỂN THỊ SAU KHI MỞ ─── */}
-      <Fade in={open} timeout={1600}>
-        <Box
-          sx={{
-            animation: "fadePage 1s ease forwards",
-          }}
-        >
+      {/* ─ PAGE SAU KHI MỞ — Chỉ fade, không scale ─ */}
+      {open && <Fade in={open} timeout={1600}>
+        <Box sx={{ animation:"fadeOnly 1s ease forwards" }}>
           {children}
         </Box>
-      </Fade>
+      </Fade>}
 
       <style>{`
-        @keyframes fadePage {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        @keyframes fadeOnly {
+          from { opacity:0; }
+          to   { opacity:1; }
         }
       `}</style>
     </>

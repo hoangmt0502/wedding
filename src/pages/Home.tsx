@@ -7,12 +7,12 @@ import VideoSection from "../components/home/VideoSection";
 import ProfileSection from "../components/home/ProfileSection";
 import MusicPlayerFloating from "../components/MusicPlayerFloating";
 import CollectionSection from "../components/home/CollectionSection";
-import WeddingWelcomeGate from "../components/WeddingWelcomeGate";
+import InvitationCover from "../components/InvitationCover";
 import EventSection from "../components/home/EventSection";
 
 export default function Home() {
   return (
-    <WeddingWelcomeGate>
+    <InvitationCover>
       <Box>
         <TopSection />
         <StorySection />
@@ -33,6 +33,6 @@ export default function Home() {
         zIndex={9999}
       />
       <MusicPlayerFloating />
-    </WeddingWelcomeGate>
+    </InvitationCover>
   );
 }
