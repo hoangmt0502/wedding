@@ -8,6 +8,7 @@ import ProfileSection from "../components/home/ProfileSection";
 import MusicPlayerFloating from "../components/MusicPlayerFloating";
 import CollectionSection from "../components/home/CollectionSection";
 import WeddingWelcomeGate from "../components/WeddingWelcomeGate";
+import EventSection from "../components/home/EventSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <VideoSection />
         <ProfileSection />
         <CollectionSection />
+        <EventSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}

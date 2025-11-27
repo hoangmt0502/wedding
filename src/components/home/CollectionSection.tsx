@@ -87,6 +87,7 @@ const CollectionSection = () => {
                   objectFit: "cover",
                   borderRadius: 8,
                   display: "block",
+                  cursor: "pointer",
                 }}
                 onClick={() => openViewer(COLLECTION_LEFT.length + idx)}
               >
