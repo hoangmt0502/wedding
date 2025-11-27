@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import WeddingFallingImages from "../components/WeddingFallingImages";
 import { IMAGE_DOVE, LIST_IMAGES_FALLING } from "../constants/common";
 import TopSection from "../components/home/TopSection";
@@ -8,7 +8,7 @@ import ProfileSection from "../components/home/ProfileSection";
 import MusicPlayerFloating from "../components/MusicPlayerFloating";
 import CollectionSection from "../components/home/CollectionSection";
 import InvitationCover from "../components/InvitationCover";
-import EventSection from "../components/home/EventSection";
+import CalendarSection from "../components/home/CalendarSection";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
         <VideoSection />
         <ProfileSection />
         <CollectionSection />
-        <EventSection />
+        <CalendarSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}
