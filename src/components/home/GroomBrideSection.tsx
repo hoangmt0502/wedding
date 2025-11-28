@@ -3,10 +3,10 @@ import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { MAIN_COLOR } from "../../constants/common";
 
-const PersonCard = ({ image, name, father, mother, address }: any) => (
+const PersonCard = ({ image, name, father, mother, address, nameType }: any) => (
   <Box
     sx={{
-      width: { xs: "100%", md: "46%" },
+      width: { xs: "100%", md: "40%" },
       background: "rgba(255,255,255,0.85)",
       borderRadius: "14px",
       border: "1.7px solid rgba(200,150,70,0.65)",
@@ -50,20 +50,20 @@ const PersonCard = ({ image, name, father, mother, address }: any) => (
       {name}
     </Typography>
 
-    <Typography sx={{ fontSize: 14, opacity: 0.55, my: 1 }}>♡</Typography>
+    <Typography sx={{ fontSize: 20, opacity: 0.55 }}>♡</Typography>
 
     {/* Nhà */}
     <Typography
       sx={{
         fontFamily: "'Cormorant Garamond', serif",
-        fontSize: 16,
+        fontSize: 22,
         fontWeight: 600,
         letterSpacing: 0.6,
         color: "#7b5a2f",
         mb: .5
       }}
     >
-      {name === "Xuân Thịnh" ? "NHÀ TRAI" : "NHÀ GÁI"}
+      {nameType}
     </Typography>
 
     {/* Cha mẹ */}
@@ -72,7 +72,8 @@ const PersonCard = ({ image, name, father, mother, address }: any) => (
         fontFamily: "'Cormorant Garamond', serif",
         color: "#3f3f3f",
         lineHeight: 1.55,
-        fontSize: 15
+        fontSize: 20,
+        fontWeight: 700
       }}
     >
       {father} <br/> {mother}
@@ -141,18 +142,20 @@ export default function GroomBrideSection() {
           <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={6} justifyContent="center">
             <PersonCard
               image="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg"
-              name="Xuân Thịnh"
-              father="Nguyễn Xuân Dung"
-              mother="Nguyễn Thị Tuyết"
-              address="Tư gia: Xóm 9, Diễn Thái, Diễn Châu, Nghệ An."
+              name="Minh Hoàng"
+              father="Trần Quang Huy"
+              mother="Nguyễn Thị Vân"
+              address="Quốc Phương Trại: Số 74, ngõ 161 Hoa Lâm, Việt Hưng, Long Biên, Hà Nội."
+              nameType="NHÀ TRAI"
             />
 
             <PersonCard
               image="https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527"
-              name="Diễm Hằng"
-              father="Nghiêm Xuân Hợp"
-              mother="Nguyễn Thị Loan"
-              address="Tư gia: Phố Chàng, Việt Tiến, Việt Yên, Bắc Giang."
+              name="Khánh Huyền"
+              father="Nguyễn Trọng Nam"
+              mother="Nguyễn Thị Cúc"
+              address="TTTM Himlam Plaza: Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên"
+              nameType="NHÀ GÁI"
             />
           </Box>
         </Box>
