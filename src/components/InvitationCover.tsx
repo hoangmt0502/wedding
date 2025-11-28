@@ -121,7 +121,8 @@ export default function InvitationCover({ children }: { children: React.ReactNod
               opacity: 0.85,
               fontStyle: "italic",
               fontFamily: "'Dancing Script', cursive",
-              fontWeight: 700
+              fontWeight: 700,
+              mt: -1
             }}
           >
             Chạm để mở thiệp

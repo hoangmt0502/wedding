@@ -9,6 +9,8 @@ import MusicPlayerFloating from "../components/MusicPlayerFloating";
 import CollectionSection from "../components/home/CollectionSection";
 import InvitationCover from "../components/InvitationCover";
 import CalendarSection from "../components/home/CalendarSection";
+import IntroSection from "../components/home/IntroSection";
+import GroomBrideSection from "../components/home/GroomBrideSection";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
         <ProfileSection />
         <CollectionSection />
         <CalendarSection />
+        <IntroSection />
+        <GroomBrideSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}
