@@ -39,7 +39,7 @@ interface TimeRemaining {
   seconds: number;
 }
 
-const EventSection = () => {
+const CalendarSection = () => {
   const [selected, setSelected] = useState(0);
   const event = events[selected];
 
@@ -158,7 +158,7 @@ const EventSection = () => {
   );
 };
 
-export default EventSection;
+export default CalendarSection;
 
 
 // ==== SUB COMPONENT COUNTDOWN ====
