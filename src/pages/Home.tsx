@@ -13,6 +13,7 @@ import IntroSection from "../components/home/IntroSection";
 import GroomBrideSection from "../components/home/GroomBrideSection";
 import EventSection from "../components/home/EventSection";
 import WeddingGiftSection from "../components/home/WeddingGiftSection";
+import GuestBookSection from "../components/home/GuestBookSection";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <GroomBrideSection />
         <EventSection />
         <WeddingGiftSection />
+        <GuestBookSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}

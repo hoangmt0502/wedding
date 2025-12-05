@@ -20,9 +20,9 @@ const PulseHeart = styled(FavoriteIcon)`
 const events = [
   {
     label: "💍 Lịch cưới nhà chú rể",
-    date: "2026-01-15 17:00",
-    lunar: "27/11/2025",
-    highlightDay: 15,
+    date: "2026-01-14 17:00",
+    lunar: "26/11/2025",
+    highlightDay: 14,
   },
   {
     label: "🌸 Lịch cưới nhà cô dâu",

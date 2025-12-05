@@ -18,6 +18,9 @@ export default function GlobalScrollbarStyles() {
       "*::-webkit-scrollbar-track": {
         backgroundColor: "#f0f0f0",
       },
+      "button:focus, button:focus-visible": {
+        outline: 'none'
+      }
     }}
   />
   ) 

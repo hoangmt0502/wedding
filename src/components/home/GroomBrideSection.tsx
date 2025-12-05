@@ -145,7 +145,7 @@ export default function GroomBrideSection() {
               name="Minh Hoàng"
               father="Trần Quang Huy"
               mother="Nguyễn Thị Vân"
-              address="Nhà văn hóa tổ 14, Đức Giang: số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội."
+              address="Nhà văn hóa tổ 14, Đức Giang: số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội"
               nameType="NHÀ TRAI"
             />
 
