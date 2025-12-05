@@ -45,9 +45,9 @@ const EVENTS: TEvent[] = [
   {
     id: "bride-party",
     title: "Tiệc Cưới Nhà Gái",
-    time: "17h00 Thứ 7, ngày 01/06/2026",
-    placeLabel: "Tư gia nhà Gái",
-    address: "Phố Chàng, Việt Tiến, Việt Yên, Bắc Giang",
+    time: "11h00 Thứ 3, ngày 13/01/2026",
+    placeLabel: "TTTM Himlam Plaza",
+    address: "Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên",
     image:
       "https://images.pexels.com/photos/4644406/pexels-photo-4644406.jpeg",
     primaryBtn: "Xem chỉ đường",
@@ -63,7 +63,7 @@ const EVENTS: TEvent[] = [
         title: "Tiệc Cưới Nhà Gái",
         time: "",
         placeLabel: "",
-        address: "Phố Chàng, Việt Tiến, Việt Yên, Bắc Giang",
+        address: "TTTM Himlam Plaza: Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên",
         image: "",
         primaryBtn: "",
         secondaryBtn: "",
@@ -73,16 +73,16 @@ const EVENTS: TEvent[] = [
   {
     id: "le-vu-quy",
     title: "Lễ Vu Quy",
-    time: "10h00 Thứ 7, ngày 01/06/2026",
+    time: "9h00 Thứ 3, ngày 13/01/2026",
     placeLabel: "Tư gia nhà Gái",
-    address: "Phố Chàng, Việt Tiến, Việt Yên, Bắc Giang",
+    address: "Ngõ 175 - Tổ 6 Đường Sùng Phái Sinh, Phường Điện Biên Phủ, Điện Biên",
     image:
       "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Mừng cưới",
 
     onPrimaryClick: () => window.open(
-      'https://maps.app.goo.gl/G1MjgcMdq8SkBski8',
+      'https://maps.app.goo.gl/vZ8EQJJL7TFHXUw36',
       "_blank"
     ),
     onSecondaryClick: () => alert("Mở trang mừng cưới"),
@@ -172,7 +172,7 @@ const EventCard = ({ event }: { event: TEvent }) => {
         sx={{
           position: "absolute",
           top: -70,
-          right: 10,
+          right: 16,
           width: 220,
           height: 140,
           borderRadius: 2,

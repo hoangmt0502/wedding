@@ -12,6 +12,7 @@ import CalendarSection from "../components/home/CalendarSection";
 import IntroSection from "../components/home/IntroSection";
 import GroomBrideSection from "../components/home/GroomBrideSection";
 import EventSection from "../components/home/EventSection";
+import WeddingGiftSection from "../components/home/WeddingGiftSection";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <IntroSection />
         <GroomBrideSection />
         <EventSection />
+        <WeddingGiftSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}
