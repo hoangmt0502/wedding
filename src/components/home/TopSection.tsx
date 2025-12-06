@@ -3,10 +3,12 @@ import ImageWrapper from "./ImageWrapper";
 import PrimaryButton from "../button/PrimaryButton";
 import { idPage } from "../../constants/common";
 import { scrollToSection } from "../../utils/common";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function TopSection() {
+  const {isTablet, isMobile} = useResponsive();
   return (
-    <ImageWrapper src="https://bellabridal.vn/public/upload/files/343342550_5955920044504242_5222768225392896037_n.jpg">
+    <ImageWrapper height={isMobile ? 400 : isTablet ? 700 : 850} src="https://bellabridal.vn/public/upload/files/343342550_5955920044504242_5222768225392896037_n.jpg">
       <Box width={'100%'} height={'100%'} display={'flex'} flexDirection={'row'} justifyContent={'center'} alignItems={'flex-end'}>
         <Box mb={4}>
           <Typography
@@ -49,12 +51,12 @@ export default function TopSection() {
         <Box
           sx={{
             width: '100%',
-            maxWidth: 1200, // Giới hạn chiều rộng
             mt: 3,
             // Dùng flex để sắp xếp 3 nút
             display: 'flex',
-            justifyContent: 'space-around', // Khoảng cách đều giữa các nút
+            justifyContent: 'center', // Khoảng cách đều giữa các nút
             padding: '0 20px',
+            gap: 5
           }}
         >
           <PrimaryButton
