@@ -7,13 +7,15 @@ export default function ImageWrapper({
   children, 
   isCompactWidth = false, 
   height = 850,
-  opacity = 0.1
+  opacity = 0.1,
+  id
 } : {
   src: string; 
   children: ReactNode; 
   isCompactWidth?: boolean; 
   height?: number | string;
   opacity?: number;
+  id?: string;
 }) {
   const {mainWidth, compactWidth} = useContentWidth();
   const backgroundImageUrl = `linear-gradient(rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity})), url('${src}')`; 
@@ -29,6 +31,7 @@ export default function ImageWrapper({
         display: 'flex', 
         justifyContent: 'center',
       }}
+      id={id}
     >
       <Box
         sx={{

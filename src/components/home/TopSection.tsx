@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import ImageWrapper from "./ImageWrapper";
 import PrimaryButton from "../button/PrimaryButton";
+import { idPage } from "../../constants/common";
+import { scrollToSection } from "../../utils/common";
 
 export default function TopSection() {
   return (
@@ -42,7 +44,7 @@ export default function TopSection() {
             textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
           }}
         >
-          13/01/2026 Nhà Gái - 15/01/2026 Nhà Trai
+          13/01/2026 Nhà Gái - 14/01/2026 Nhà Trai
         </Typography>
         <Box
           sx={{
@@ -55,25 +57,22 @@ export default function TopSection() {
             padding: '0 20px',
           }}
         >
-          {/* 1. Gửi lời chúc */}
           <PrimaryButton
             iconType="heart"
             label="Gửi lời chúc"
-            onClick={() => {}}
+            onClick={() => scrollToSection(idPage.guestBook)}
           />
-          
-          {/* 2. Sự kiện cưới (Không icon trong ảnh, dùng icon sự kiện mặc định) */}
+
           <PrimaryButton
-            iconType="event" // Icon sự kiện để làm ví dụ
+            iconType="event"
             label="Sự kiện cưới"
-            onClick={() => {}}
+            onClick={() => scrollToSection(idPage.event)}
           />
-          
-          {/* 3. Mừng cưới */}
+
           <PrimaryButton
             iconType="gift"
             label="Mừng cưới"
-            onClick={() => {}}
+            onClick={() => scrollToSection(idPage.gift)}
           />
         </Box>
         </Box>

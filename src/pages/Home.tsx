@@ -14,11 +14,12 @@ import GroomBrideSection from "../components/home/GroomBrideSection";
 import EventSection from "../components/home/EventSection";
 import WeddingGiftSection from "../components/home/WeddingGiftSection";
 import GuestBookSection from "../components/home/GuestBookSection";
+import EndingSection from "../components/home/EndingSection";
 
 export default function Home() {
   return (
     <InvitationCover>
-      <Box>
+      <Box sx={{overflowX: 'hidden'}}>
         <TopSection />
         <StorySection />
         <VideoSection />
@@ -30,6 +31,7 @@ export default function Home() {
         <EventSection />
         <WeddingGiftSection />
         <GuestBookSection />
+        <EndingSection />
       </Box>
       <WeddingFallingImages
         images={LIST_IMAGES_FALLING}

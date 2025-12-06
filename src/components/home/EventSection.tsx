@@ -2,7 +2,8 @@ import { Box, Button, Typography } from "@mui/material";
 import { CalendarMonth, AccessTime, PlaceOutlined } from "@mui/icons-material";
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
-import { MAIN_COLOR } from "../../constants/common";
+import { idPage, MAIN_COLOR } from "../../constants/common";
+import { scrollToSection } from "../../utils/common";
 
 type TEvent = {
   id: string;
@@ -15,13 +16,6 @@ type TEvent = {
   secondaryBtn: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
-};
-
-const openMap = (lat?: number, lng?: number, title?: string) => {
-  if (lat && lng) {
-    const url = `https://www.google.com/maps?q=${lat},${lng}${title ? `(${encodeURIComponent(title)})` : ""}`;
-    window.open(url, "_blank");
-  }
 };
 
 const openCalendar = (event: TEvent) => {
@@ -73,7 +67,7 @@ const EVENTS: TEvent[] = [
   {
     id: "le-vu-quy",
     title: "Lễ Vu Quy",
-    time: "9h00 Thứ 3, ngày 13/01/2026",
+    time: "10h00 Thứ 3, ngày 13/01/2026",
     placeLabel: "Tư gia nhà Gái",
     address: "Ngõ 175 - Tổ 6 Đường Sùng Phái Sinh, Phường Điện Biên Phủ, Điện Biên",
     image:
@@ -85,7 +79,7 @@ const EVENTS: TEvent[] = [
       'https://maps.app.goo.gl/vZ8EQJJL7TFHXUw36',
       "_blank"
     ),
-    onSecondaryClick: () => alert("Mở trang mừng cưới"),
+    onSecondaryClick: () => scrollToSection(idPage.gift),
   },
 
   {
@@ -95,7 +89,7 @@ const EVENTS: TEvent[] = [
     placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
     address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
     image:
-      "https://images.pexels.com/photos/2567372/pexels-photo-2567372.jpeg",
+      "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Thêm vào lịch",
 
@@ -131,7 +125,7 @@ const EVENTS: TEvent[] = [
       'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
       "_blank"
     ),
-    onSecondaryClick: () => alert("Trang mừng cưới"),
+    onSecondaryClick: () => scrollToSection(idPage.gift),
   },
 ];
 
@@ -282,6 +276,7 @@ export default function EventSection() {
 
   return (
     <Box
+      id={idPage.event}
       sx={{
         width: "100%",
         py: 8,

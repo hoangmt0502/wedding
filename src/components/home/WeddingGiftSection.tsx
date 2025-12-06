@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, Stack } from "@mui/material";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import GiftQRModal from "./GiftQRModal";
 import ImageWrapper from "./ImageWrapper";
+import { idPage } from "../../constants/common";
 
 export default function WeddingGiftSection() {
   const [openQR, setOpenQR] = useState(false);
@@ -15,6 +16,7 @@ export default function WeddingGiftSection() {
         isCompactWidth
         height={700}
         opacity={0.7}
+        id={idPage.gift}
       >
         <Stack alignItems={'center'} justifyContent={'center'} height={'100%'} width={'100%'}>
           <Box
