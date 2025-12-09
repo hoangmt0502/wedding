@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { IMAGE_FLOWER } from "../constants/common";
+import { useResponsive } from "../hooks/useResponsive";
 
 type Props = {
   images: string[];            // particle images (hearts/flowers...)
@@ -72,6 +73,7 @@ export default function WeddingFallingImages({
   const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const bassLevelRef = useRef(0);
   const visibleRef = useRef(true);
+  const {isMobile} = useResponsive();
 
   useEffect(() => {
     const doc = document;
@@ -158,7 +160,7 @@ export default function WeddingFallingImages({
     const createParticle = (depthScale: number, speedScale: number): Particle => {
       const src = images[Math.floor(Math.random() * images.length)];
       const img = loadedImgs[src]; // may be undefined until preloaded
-      const size = rand(18, 44) * depthScale;
+      const size = rand(isMobile ? 9 : 18, isMobile ? 22 : 44) * depthScale;
       return {
         imgSrc: src,
         img,
@@ -231,7 +233,7 @@ export default function WeddingFallingImages({
         img: loadedImgs[doveImage],
         t: 0,
         path,
-        size: rand(48, 86),
+        size: rand(isMobile ? 24 : 48, isMobile ? 43 : 86),
         speed: rand(0.0008, 0.0018), // progress per ms
         angle: 0,
       });

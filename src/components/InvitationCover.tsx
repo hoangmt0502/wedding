@@ -42,7 +42,7 @@ export default function InvitationCover({ children }: { children: React.ReactNod
         >
 
           {/* ===== HEADER ===== */}
-          <Typography sx={{ mt: 4, fontSize: 14, letterSpacing: 8, opacity: 0.7 }}>
+          <Typography sx={{ mt: 4, fontSize: 14, letterSpacing: {xs: 3, sm: 8}, opacity: 0.7 }}>
             W E D D I N G &nbsp; I N V I T A T I O N
           </Typography>
 

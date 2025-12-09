@@ -86,7 +86,7 @@ function HeaderTabs(props: {
       <Tabs
         value={value}
         onChange={handleChange}
-        TabIndicatorProps={{ style: { display: "none" } }} // Ẩn gạch dưới
+        // TabIndicatorProps={{ style: { display: "none" } }} // Ẩn gạch dưới
         sx={{
           width: '100%',
           py: 6,

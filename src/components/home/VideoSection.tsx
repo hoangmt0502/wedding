@@ -3,20 +3,22 @@ import { Box, IconButton, Typography, Dialog } from "@mui/material";
 import ImageWrapper from "./ImageWrapper";
 import { PlayCircleOutline } from "@mui/icons-material";
 import ReactPlayer from "react-player";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function VideoSection() {
   const [open, setOpen] = useState(false);
+  const {isMobile} = useResponsive();
 
   return (
     <>
       <ImageWrapper
         src="https://tuart.net/wp-content/uploads/2022/01/270284502_1589108414821889_2158477857562109361_n.jpg"
         opacity={0.4}
-        height={700}
+        height={isMobile ? 400 : 700}
         isCompactWidth
       >
         <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-          <Box textAlign="center" color="#fff" mt={30} px={2}>
+          <Box textAlign="center" color="#fff" mt={{xs: 10, sm: 30}} px={2}>
 
             <Typography sx={{ fontSize:{xs:"2rem", md:"3rem"}, fontFamily:"'Fleur De Leah', cursive", fontWeight:600, mb:1 }}>
               Xem video cưới của chúng tôi!
@@ -26,8 +28,8 @@ export default function VideoSection() {
               Hạnh phúc không ồn ào. Hạnh phúc là khi có người nắm tay mình đi qua mọi ngày.
             </Typography>
 
-            <IconButton onClick={()=>setOpen(true)} sx={{width:140, height:140, color:"#ff6e6e", "&:hover":{transform:"scale(1.08)", color:"#ff8a8a"}}}>
-              <PlayCircleOutline sx={{ fontSize:140 }} />
+            <IconButton onClick={()=>setOpen(true)} sx={{width:{xs: 80, sm: 140}, height:{xs: 80, sm: 140}, color:"#ff6e6e", "&:hover":{transform:"scale(1.08)", color:"#ff8a8a"}}}>
+              <PlayCircleOutline sx={{ fontSize:{xs: 80, sm: 140} }} />
             </IconButton>
           </Box>
         </Box>

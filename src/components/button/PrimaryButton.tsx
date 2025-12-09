@@ -38,7 +38,7 @@ export default function PrimaryButton({
           "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)",
         color: "black",
         textTransform: "none",
-        padding: "10px 20px",
+        padding: {xs: "0px 16px", sm: "10px 20px"},
 
         // ⭐ RESPONSIVE CHỈ THÊM — KHÔNG ĐỔI UI
         fontSize: {
