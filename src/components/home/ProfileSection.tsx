@@ -79,6 +79,7 @@ function HeaderTabs(props: {
         backgroundPosition: "50%",
         backgroundSize: "cover",
         mb: 4,
+        mx: {xs: 1, sm: 0},
         display: "flex",
         justifyContent: "center",
       }}
@@ -86,10 +87,9 @@ function HeaderTabs(props: {
       <Tabs
         value={value}
         onChange={handleChange}
-        // TabIndicatorProps={{ style: { display: "none" } }} // Ẩn gạch dưới
         sx={{
           width: '100%',
-          py: 6,
+          py: {xs: 2, sm: 6},
           border: "1px solid #fff",
           borderRadius: 2,
           "& .Mui-selected": {
@@ -101,14 +101,16 @@ function HeaderTabs(props: {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: {xs: 'column', sm: 'row'},
+            gap: {xs: 2, sm: 0}
           },
 
           // Style chung cho tab
           "& .MuiTab-root": {
             minWidth: 300,
-            px: 4,
-            py: 3,
-            mx: 4,
+            px: {xs: 2 ,sm: 4},
+            py: {xs: 1, sm: 3},
+            mx: {xs: 2, sm: 4},
             borderRadius: 1,
             color: "#333",
             fontSize: "1.05rem",
@@ -154,7 +156,7 @@ export default function ProfileSection() {
   const activeProfile = PROFILES.filter((p) => p.id === activeId);
 
   return (
-    <Box sx={{background: "#faf6f6", pb: 4, pt: 1 }}>
+    <Box sx={{background: "#faf6f6", pb: 4, pt: {xs: 2, sm: 1} }}>
       <Box sx={{ width: compactWidth, mx: "auto" }}>
         <HeaderTabs src={src} tabs={TABS} value={tab} onChange={setTab} />
 
