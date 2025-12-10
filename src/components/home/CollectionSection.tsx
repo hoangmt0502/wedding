@@ -14,12 +14,14 @@ import { COLLECTION_LEFT, COLLECTION_RIGHT, MAIN_COLOR } from "../../constants/c
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { ExpandMore } from "@mui/icons-material";
+import { useResponsive } from "../../hooks/useResponsive";
 
 const allImages = [...COLLECTION_LEFT, ...COLLECTION_RIGHT];
 
 const CollectionSection = () => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
+  const {isMobile} = useResponsive();
 
   const {compactWidth, mainWidth} = useContentWidth();
 
@@ -37,73 +39,75 @@ const CollectionSection = () => {
     setCurrent((prev) => (prev - 1 + allImages.length) % allImages.length);
 
   return (
-    <Box sx={{py: 6, backgroundColor: '#f5f3f3ff'}}>
+    <Box sx={{py: {xs: 3, sm: 6}, backgroundColor: '#f5f3f3ff'}}>
       <Box sx={{ width: compactWidth, mx: 'auto' }}>
-        <Stack alignItems={'center'} mb={4}><SharedImage src="/images/logo.png" width={160}/></Stack>
-        <Typography
-          variant="h5"
-          sx={{ mb: 4, fontWeight: 600, letterSpacing: 1, color: MAIN_COLOR, fontSize: '2.2rem' }}
-        >
-          BỘ SƯU TẬP ẢNH CƯỚI
-        </Typography>
-  
-        {/* 2 column layout */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            justifyContent: "center",
-          }}
-        >
-          {/* LEFT COLUMN */}
-          <Box sx={{ flex: 0.37, display: "flex", flexDirection: "column", gap: 2, justifyContent: 'center' }}>
-            {COLLECTION_LEFT.map((src, idx) => (
-              <Box
-                key={src + idx}
-                sx={{
-                  width: "100%",
-                  borderRadius: 2,
-                  overflow: "hidden",
-                  cursor: "pointer",
-                }}
-                onClick={() => openViewer(idx)}
-              >
-                <SharedImage
-                  src={src}
-                  style={{ width: "100%", display: "block", borderRadius: 8 }}
-                />
-              </Box>
-            ))}
+        <Box sx={{mx: {xs: 1, sm: 0}}}>
+          <Stack alignItems={'center'} mb={{xs: 2, sm: 4}}><SharedImage src="/images/logo.png" width={isMobile ? 100 : 160}/></Stack>
+          <Typography
+            variant="h5"
+            sx={{ mb: 4, fontWeight: 600, letterSpacing: 1, color: MAIN_COLOR, fontSize: {xs: 22, sm: '2.2rem'} }}
+          >
+            BỘ SƯU TẬP ẢNH CƯỚI
+          </Typography>
+    
+          {/* 2 column layout */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: "center",
+            }}
+          >
+            {/* LEFT COLUMN */}
+            <Box sx={{ flex: 0.37, display: "flex", flexDirection: "column", gap: 2, justifyContent: 'center' }}>
+              {COLLECTION_LEFT.map((src, idx) => (
+                <Box
+                  key={src + idx}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 2,
+                    overflow: "hidden",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => openViewer(idx)}
+                >
+                  <SharedImage
+                    src={src}
+                    style={{ width: "100%", display: "block", borderRadius: 8 }}
+                  />
+                </Box>
+              ))}
+            </Box>
+    
+            {/* RIGHT COLUMN */}
+            <Box sx={{ flex: 0.63, display: "flex", flexDirection: "column", gap: 2 }}>
+              {COLLECTION_RIGHT.map((src, idx) => (
+                <Box
+                  key={src + idx}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    objectFit: "cover",
+                    borderRadius: 8,
+                    display: "block",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => openViewer(COLLECTION_LEFT.length + idx)}
+                >
+                  <SharedImage
+                    src={src}
+                    style={{ width: "100%", display: "block", borderRadius: 8 }}
+                  />
+                </Box>
+              ))}
+            </Box>
           </Box>
-  
-          {/* RIGHT COLUMN */}
-          <Box sx={{ flex: 0.63, display: "flex", flexDirection: "column", gap: 2 }}>
-            {COLLECTION_RIGHT.map((src, idx) => (
-              <Box
-                key={src + idx}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                  borderRadius: 8,
-                  display: "block",
-                  cursor: "pointer",
-                }}
-                onClick={() => openViewer(COLLECTION_LEFT.length + idx)}
-              >
-                <SharedImage
-                  src={src}
-                  style={{ width: "100%", display: "block", borderRadius: 8 }}
-                />
-              </Box>
-            ))}
-          </Box>
+    
+          <Button variant="text" onClick={() => setOpen(true)} sx={{ mt: {xs: 2, sm: 4}, fontSize: {xs: 18,sm: '1.5rem'}, flexDirection: 'column', px: 2 }} color="secondary">
+            XEM THÊM
+            <ExpandMore fontSize={isMobile ? 'medium' : 'large'} />
+          </Button>
         </Box>
-  
-        <Button variant="text" onClick={() => setOpen(true)} sx={{ mt: 4, fontSize: '1.5rem', flexDirection: 'column', px: 2 }} color="secondary">
-          XEM THÊM
-          <ExpandMore fontSize="large" />
-        </Button>
   
         {/* POPUP */}
         <Dialog fullScreen open={open} onClose={closeViewer}>

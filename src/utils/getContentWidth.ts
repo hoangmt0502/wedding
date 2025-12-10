@@ -16,7 +16,7 @@ export const getContentWidth = (windowWidth: number) => {
 
   // Tablet lớn (md)
   else if (windowWidth < 1200) {
-    mainWidth = 900 - 96;                              // 804
+    mainWidth = Math.round(windowWidth * 0.90);                           // 804
     compactWidth = mainWidth
   }
 

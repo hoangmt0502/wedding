@@ -13,6 +13,8 @@ import {
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { Icon } from '@iconify/react';
+import { MAIN_COLOR } from "../../constants/common";
+import { useResponsive } from "../../hooks/useResponsive";
 
 interface ProfileItem {
   id: number;
@@ -78,7 +80,7 @@ function HeaderTabs(props: {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${src}')`,
         backgroundPosition: "50%",
         backgroundSize: "cover",
-        mb: 4,
+        mb: {xs: 2, sm: 4},
         mx: {xs: 1, sm: 0},
         display: "flex",
         justifyContent: "center",
@@ -87,13 +89,14 @@ function HeaderTabs(props: {
       <Tabs
         value={value}
         onChange={handleChange}
+        TabIndicatorProps={{hidden: true}}
         sx={{
           width: '100%',
           py: {xs: 2, sm: 6},
           border: "1px solid #fff",
           borderRadius: 2,
           "& .Mui-selected": {
-            color: "#333 !important",
+            color: `#ff6e6e !important`,
             border: "none !important",
           },
           
@@ -148,6 +151,7 @@ export default function ProfileSection() {
 
   const [tab, setTab] = useState(0);
   const {compactWidth} = useContentWidth();
+  const {isMobile} = useResponsive();
 
   // Lấy id profile tương ứng tab
   const activeId = TABS[tab].targetId;
@@ -156,7 +160,7 @@ export default function ProfileSection() {
   const activeProfile = PROFILES.filter((p) => p.id === activeId);
 
   return (
-    <Box sx={{background: "#faf6f6", pb: 4, pt: {xs: 2, sm: 1} }}>
+    <Box sx={{background: "#faf6f6", pb: {xs: 2, sm: 4}, pt: {xs: 2, sm: 1} }}>
       <Box sx={{ width: compactWidth, mx: "auto" }}>
         <HeaderTabs src={src} tabs={TABS} value={tab} onChange={setTab} />
 
@@ -165,18 +169,18 @@ export default function ProfileSection() {
             key={p.id}
             container
             spacing={3}
-            sx={{ mb: 6 }}
+            sx={{ mb: {xs: 2, md: 6} }}
             direction="row"
           >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{mx: {xs: 1, sm: 0}}}>
               <SharedImage
                 src={p.image}
                 alt={p.name}
-                style={{ width: "100%", display: "block", borderRadius: 4, height: 700 }}
+                style={{ width: "100%", display: "block", borderRadius: isMobile ? 2 : 4, height: isMobile ? 500 : 700 }}
               />
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{mx: {xs: 1, sm: 0}}}>
               <Paper
                 sx={{
                   p: 2.5,
