@@ -2,22 +2,23 @@ import { Box, Typography } from "@mui/material";
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { MAIN_COLOR } from "../../constants/common";
+import { useResponsive } from "../../hooks/useResponsive";
 
 const PersonCard = ({ image, name, father, mother, address, nameType }: any) => (
   <Box
     sx={{
-      width: { xs: "100%", md: "40%" },
-      background: "rgba(255,255,255,0.85)",
+      width: {xs: "50%", md: '40%'},
+      background: {xs: 'none', sm: "rgba(255,255,255,0.85)"},
       borderRadius: "14px",
-      border: "1.7px solid rgba(200,150,70,0.65)",
-      backdropFilter: "blur(10px)",
-      boxShadow: "0 0 30px rgba(0,0,0,0.08)",
-      p: 3,
+      border: {xs: "none", sm: "1.7px solid rgba(200,150,70,0.65)"},
+      backdropFilter: {xs: "none", sm: "blur(10px)"},
+      boxShadow: {xs: "none", sm: "0 0 30px rgba(0,0,0,0.08)"},
+      p: {xs: 0, sm: 3},
       textAlign: "center",
       transition: "0.35s",
       "&:hover": {
-        transform: "translateY(-6px)",
-        boxShadow: "0 0 35px rgba(0,0,0,0.16)",
+        transform: {xs: "none", sm: "translateY(-6px)"},
+        boxShadow: {xs: "none", sm: "0 0 35px rgba(0,0,0,0.16)"},
       }
     }}
   >
@@ -27,7 +28,8 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
       src={image}
       sx={{
         width: 260,
-        height: 360,
+        height: {xs: 240, sm: 360},
+        maxWidth: "100%",
         borderRadius: "10px",
         objectFit: "cover",
         boxShadow: "0 6px 22px rgba(0,0,0,0.32)",
@@ -40,9 +42,9 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
     {/* Tên */}
     <Typography
       sx={{
-        mt: 2.5,
+        mt: {xs: 1.5, sm: 2.5},
         fontFamily: "'Great Vibes', cursive",
-        fontSize: 34,
+        fontSize: {xs: 26, sm: 34},
         fontWeight: 600,
         color: "#2e2e2e"
       }}
@@ -56,7 +58,7 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
     <Typography
       sx={{
         fontFamily: "'Cormorant Garamond', serif",
-        fontSize: 22,
+        fontSize: {xs: 20, sm: 22},
         fontWeight: 600,
         letterSpacing: 0.6,
         color: "#7b5a2f",
@@ -72,14 +74,14 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
         fontFamily: "'Cormorant Garamond', serif",
         color: "#3f3f3f",
         lineHeight: 1.55,
-        fontSize: 20,
+        fontSize: {xs: 18, sm: 20},
         fontWeight: 700
       }}
     >
       {father} <br/> {mother}
     </Typography>
 
-    <Typography sx={{ mt: 1.5, fontSize: 14, color: "#555" }}>
+    <Typography sx={{ mt: 1.5, fontSize: 14, color: "#555", px: {xs: 1, sm: 0} }}>
       {address}
     </Typography>
   </Box>
@@ -88,14 +90,15 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
 
 export default function GroomBrideSection() {
   const { compactWidth } = useContentWidth();
+  const {isMobile} = useResponsive();
 
   return (
-    <Box sx={{ width: "100%", pb: 9, display: "flex", justifyContent: "center", background: 'rgb(248, 246, 246)' }}>
+    <Box sx={{ width: "100%", pb: {xs: 0, sm: 9}, mt: 4, display: "flex", justifyContent: "center", background: 'rgb(248, 246, 246)' }}>
       <Box
         sx={{
           width: compactWidth,
           mx: "auto",
-          borderRadius: 3,
+          borderRadius: {xs: 0, sm: 3},
           backgroundImage: "url('https://daknong.1cdn.vn/2025/07/25/1(1).jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -120,8 +123,8 @@ export default function GroomBrideSection() {
         />
 
         {/* CONTENT */}
-        <Box sx={{ position: "relative", zIndex: 2, textAlign: "center", py: 4 }}>
-          <SharedImage src="/images/marriage_icon.png" width={75} style={{ margin: "0 auto" }} />
+        <Box sx={{ position: "relative", zIndex: 2, textAlign: "center", py: {xs: 3, md: 4} }}>
+          <SharedImage src="/images/marriage_icon.png" width={isMobile ? 48 : 75} style={{ margin: "0 auto" }} />
 
           <Typography
             variant="h3"
@@ -130,16 +133,16 @@ export default function GroomBrideSection() {
               fontWeight: 600,
               letterSpacing: 1,
               color: 'rgb(54, 54, 54)',
-              fontSize: 40,
+              fontSize: {xs: 32, md: 40},
               mt: 1,
-              mb: 5,
+              mb: {xs: 2, sm: 3, md: 5},
             }}
           >
             Chú Rể & Cô Dâu
           </Typography>
 
           {/* Flex layout card */}
-          <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={6} justifyContent="center">
+          <Box display="flex" flexDirection={'row'} gap={{xs: 1, sm: 2, md: 6}} justifyContent="center" px={{xs: 1, sm: 2, md: 0}}>
             <PersonCard
               image="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg"
               name="Minh Hoàng"

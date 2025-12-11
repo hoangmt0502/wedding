@@ -80,16 +80,15 @@ const CalendarSection = () => {
       textAlign="center"
       sx={{
         background: "linear-gradient(180deg,#fffaf1,#f8e9c5)",
-        // background:"#fff7e0",
       }}
     >
       <Box py={6}>
       {/* ===== 2 BUTTON TABS ===== */}
-        <Box display="flex" justifyContent="center" gap={4} mb={7}>
+        <Box display="flex" justifyContent="center" flexDirection={{xs: "column", sm: 'row'}} gap={{xs: 3, sm: 4}} mb={{xs: 4, sm: 7}} paddingX={{xs: 6, sm: 0}}>
           {events.map((e,i)=>(
             <Paper key={i} onClick={()=>setSelected(i)}
               sx={{
-                p:2, px:6, cursor:"pointer", fontWeight:600, borderRadius:3,
+                p:{xs: 1, sm: 2}, px:{xs: 3, sm: 6}, cursor:"pointer", fontWeight:600, borderRadius:3,
                 bgcolor: selected===i ? "#f8e6ba" : "#faead0",
                 border:selected===i?"3px solid #c49b45":"2px solid #e7d9b1",
                 boxShadow:selected===i?"0 5px 18px rgba(180,140,40,.55)":
@@ -105,7 +104,7 @@ const CalendarSection = () => {
         </Box>
 
         {/* ===== SHINY HEART ===== */}
-        <PulseHeart sx={{ fontSize:60, mb:1 }}/>
+        <PulseHeart sx={{ fontSize:{xs: 46, sm: 60}, mb:1 }}/>
 
         <Typography variant="h4" fontWeight={700} mb={3}
           sx={{fontFamily:"'Playfair Display', serif"}}>
@@ -113,13 +112,13 @@ const CalendarSection = () => {
         </Typography>
 
         {/* ===== CALENDAR ===== */}
-        <Grid container spacing={1} sx={{maxWidth:650,mx:"auto"}}>
+        <Grid container spacing={1} sx={{maxWidth:{xs: "100%", sm: 650},mx:"auto", paddingX: {xs: 3, sm: 0}}}>
           {["Th2","Th3","Th4","Th5","Th6","Th7","CN"].map(d=>(
             <Grid xs={12/7} key={d}><Typography fontWeight={700}>{d}</Typography></Grid>
           ))}
 
           {days.map((d,i)=>(
-            <Grid xs={12/7} key={i} textAlign="center" sx={{py:2}}>
+            <Grid xs={12/7} key={i} textAlign="center" sx={{py:{xs: 0.5, sm: 2}}}>
               {d ? (
                 <Box sx={{
                   width:40,height:40,borderRadius:"50%",mx:"auto",
@@ -141,10 +140,10 @@ const CalendarSection = () => {
         </Grid>
 
         {/* ===== EVENT INFO ===== */}
-        <Typography mt={5} fontSize={22} fontWeight={600}>
+        <Typography mt={{xs: 2, sm: 5}} fontSize={22} fontWeight={600}>
           {moment(event.date).format("HH:mm")} - {moment(event.date).format("DD/MM/YYYY")}
         </Typography>
-        <Typography sx={{opacity: 0.7}} mb={5}>
+        <Typography sx={{opacity: 0.7}} mb={{xs: 2, sm: 5}}>
           (Âm lịch: {event.lunar})
         </Typography>
 
@@ -163,16 +162,16 @@ export default CalendarSection;
 
 // ==== SUB COMPONENT COUNTDOWN ====
 const Countdown = ({value,label}:{value:number,label:string})=>(
-  <Box display="inline-block" mx={2} textAlign="center"
+  <Box display="inline-block" mx={{xs: 1.5, sm: 2}} textAlign="center"
     sx={{
-      p:3,px:4,borderRadius:4,fontWeight:700,minWidth:100,
+      p:{xs: 1, sm: 3},px:{xs: 1, sm: 4},borderRadius:4,fontWeight:700,minWidth:{xs: 60, sm: 100},
       background:"linear-gradient(145deg, #fff4dc, #fee6b2)",
       border:"2px solid #d7b06c",
-      boxShadow:"0 6px 18px rgba(160,115,50,.45)",
-      fontSize:34,
-      mt:1, mb:4
+      boxShadow: {xs: "0 4px 10px rgba(160,115,50,.45)", sm: "0 6px 18px rgba(160,115,50,.45)"},
+      fontSize:{xs: 20, sm: 34},
+      mt:1, mb:{xs: 2, sm: 4}
     }}>
     {value}
-    <Typography fontSize={14} mt={1}>{label}</Typography>
+    <Typography fontSize={14} mt={{xs: 0, sm: 1}}>{label}</Typography>
   </Box>
 );

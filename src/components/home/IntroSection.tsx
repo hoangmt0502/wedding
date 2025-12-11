@@ -2,9 +2,11 @@ import { Box, Typography, Container } from "@mui/material";
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { MAIN_COLOR } from "../../constants/common";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function IntroSection() {
   const {compactWidth} = useContentWidth();
+  const {isMobile} = useResponsive();
   return (
     <Box
       sx={{
@@ -17,14 +19,14 @@ export default function IntroSection() {
     >
       <Box width={compactWidth} mx={'auto'} display={'flex'} flexDirection={'column'} alignItems={'center'}>
 
-        <SharedImage src="/images/logo.png" width={160} style={{marginBottom: 32}}/>
+        <SharedImage src="/images/logo.png" width={isMobile ? 120 : 160} style={{marginBottom: isMobile ? 8 : 32}}/>
         
         {/* --- TITLE --- */}
         <Typography
-          variant="h3"
+          variant={isMobile ? 'h4' : "h3"}
           sx={{
             fontWeight: 500,
-            mb: 3,
+            mb: {xs: 1, sm: 3},
             fontFamily: "'Cormorant Garamond', serif",
             letterSpacing: 1,
             color: MAIN_COLOR
@@ -36,11 +38,12 @@ export default function IntroSection() {
         {/* --- DESCRIPTION TEXT --- */}
         <Typography
           sx={{
-            fontSize: 18,
+            fontSize: {xs: 16, sm: 18},
             color: "#555",
-            lineHeight: 1.8,
+            lineHeight: {xs: 1.6, sm: 1.8},
             px: { xs: 2, md: 20 },
             whiteSpace: "pre-line",
+            textAlign: {xs: 'justify', sm: 'center'}
           }}
         >
           Cảm ơn bạn đã dành tình cảm cho vợ chồng mình. Chúng mình biết các bạn đều đang rất bận, bận với công việc, với cuộc sống và với cả gia đình bạn.
@@ -52,13 +55,13 @@ export default function IntroSection() {
         </Typography>
 
         {/* --- IMAGE --- */}
-        <Box sx={{ mt: 6, display: "flex", justifyContent: "center" }}>
+        <Box sx={{ mt: {xs: 2, sm: 6}, display: "flex", justifyContent: "center" }}>
           <Box
             component="img"
             src="https://daknong.1cdn.vn/2025/07/25/1(1).jpg" // đổi ảnh sau nếu muốn
             alt="wedding"
             sx={{
-              width: "80%",
+              width: {xs: "90%", sm: "80%"},
               borderRadius: 2,
               boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",
               objectFit: "cover",

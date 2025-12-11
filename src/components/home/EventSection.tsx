@@ -165,10 +165,10 @@ const EventCard = ({ event }: { event: TEvent }) => {
       <Box
         sx={{
           position: "absolute",
-          top: -70,
-          right: 16,
-          width: 220,
-          height: 140,
+          top: {xs: -50 ,sm: -70},
+          right: {xs: 8, sm: 16},
+          width: {xs: 160, sm: 220},
+          height: {xs: 100, sm: 140},
           borderRadius: 2,
           overflow: "hidden",
           boxShadow: "0 6px 26px rgba(0,0,0,0.35)",
@@ -279,7 +279,8 @@ export default function EventSection() {
       id={idPage.event}
       sx={{
         width: "100%",
-        py: 8,
+        pb: 8,
+        pt: {xs: 4, sm: 8},
         background: "linear-gradient(180deg, #ffffff 0%, #f8f5ee 100%)",
       }}
     >
@@ -294,24 +295,24 @@ export default function EventSection() {
         {/* Icon lịch */}
         <Box
           sx={{
-            width: 60,
-            height: 60,
+            width: {xs: 46, sm: 60},
+            height: {xs: 46, sm: 60},
             borderRadius: "50%",
             border: "2px solid #444",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            mb: 2,
+            mb: {xs: 1, sm: 2},
           }}
         >
-          <CalendarMonth sx={{ fontSize: 30, color: "#444" }} />
+          <CalendarMonth sx={{ fontSize: {xs: 24, sm: 30}, color: "#444" }} />
         </Box>
 
         {/* Title */}
         <Typography
           sx={{
             fontFamily: "'Dancing Script', cursive",
-            fontSize: 40,
+            fontSize: {xs: 32, sm: 40},
             fontWeight: 600,
             color: MAIN_COLOR,
           }}
@@ -338,6 +339,7 @@ export default function EventSection() {
             flexWrap: "wrap",
             justifyContent: "space-between",
             rowGap: 12,
+            px: {xs: 2, sm: 0}
           }}
         >
           {EVENTS.map((event) => (

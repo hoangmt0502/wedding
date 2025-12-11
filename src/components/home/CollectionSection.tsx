@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Typography,
@@ -25,6 +25,8 @@ const CollectionSection = () => {
 
   const {compactWidth, mainWidth} = useContentWidth();
 
+  const thumbRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const openViewer = (index: number) => {
     setCurrent(index);
     setOpen(true);
@@ -37,6 +39,17 @@ const CollectionSection = () => {
 
   const prev = () =>
     setCurrent((prev) => (prev - 1 + allImages.length) % allImages.length);
+
+  useEffect(() => {
+    const el = thumbRefs.current[current];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [current]);
 
   return (
     <Box sx={{py: {xs: 3, sm: 6}, backgroundColor: '#f5f3f3ff'}}>
@@ -199,7 +212,10 @@ const CollectionSection = () => {
 
                 return (
                   <Box
-                    key={src}
+                    key={src + index}
+                    ref={(el) => {
+                      thumbRefs.current[index] = el as HTMLDivElement | null;
+                    }}
                     sx={{
                       width: 80,
                       height: 60,
