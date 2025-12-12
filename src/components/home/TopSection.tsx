@@ -55,7 +55,7 @@ export default function TopSection() {
             // Dùng flex để sắp xếp 3 nút
             display: 'flex',
             justifyContent: {xs: "space-between",sm: 'center'}, // Khoảng cách đều giữa các nút
-            px: "20px",
+            px: {xs: "8px", sm: "20px"},
             gap: {xs: 2, sm: 5}
           }}
         >

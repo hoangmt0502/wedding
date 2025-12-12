@@ -41,9 +41,9 @@ export default function IntroSection() {
             fontSize: {xs: 16, sm: 18},
             color: "#555",
             lineHeight: {xs: 1.6, sm: 1.8},
-            px: { xs: 2, md: 20 },
+            px: { xs: 1, md: 20 },
             whiteSpace: "pre-line",
-            textAlign: {xs: 'justify', sm: 'center'}
+            textAlign: {xs: 'justify', sm: 'center'},
           }}
         >
           Cảm ơn bạn đã dành tình cảm cho vợ chồng mình. Chúng mình biết các bạn đều đang rất bận, bận với công việc, với cuộc sống và với cả gia đình bạn.
@@ -55,13 +55,13 @@ export default function IntroSection() {
         </Typography>
 
         {/* --- IMAGE --- */}
-        <Box sx={{ mt: {xs: 2, sm: 6}, display: "flex", justifyContent: "center" }}>
+        <Box sx={{ mt: {xs: 2, sm: 6}, px: {xs: 1, sm: 0}, display: "flex", justifyContent: "center" }}>
           <Box
             component="img"
             src="https://daknong.1cdn.vn/2025/07/25/1(1).jpg" // đổi ảnh sau nếu muốn
             alt="wedding"
             sx={{
-              width: {xs: "90%", sm: "80%"},
+              width: {xs: "100%", sm: "80%"},
               borderRadius: 2,
               boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",
               objectFit: "cover",

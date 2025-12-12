@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { GOOGLE_SCRIPT_URL, idPage, suggestions } from "../../constants/common";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function GuestBookSection() {
   const [name, setName] = useState("");
@@ -22,6 +23,7 @@ export default function GuestBookSection() {
   const [success, setSuccess] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const {isMobile} = useResponsive();
 
   // 🎁 Random
   const randomSuggest = () => {
@@ -133,7 +135,7 @@ export default function GuestBookSection() {
 
   // 💬 UI
   return (
-    <Box id={idPage.guestBook} sx={{ width: "100%", py: 10, background: "#f7f5f5", position: "relative" }}>
+    <Box id={idPage.guestBook} sx={{ width: "100%", py: {xs: 4, md: 10}, px: {xs: 1, md: 0}, background: "#f7f5f5", position: "relative" }}>
       {/* Canvas Hearts / Confetti */}
       <canvas
         ref={canvasRef}
@@ -169,12 +171,12 @@ export default function GuestBookSection() {
 
       {/* Header */}
       <Box textAlign="center">
-        <FavoriteBorderOutlinedIcon sx={{ fontSize: 48, color: "#b28a9a", mb: 2 }} />
+        <FavoriteBorderOutlinedIcon sx={{ fontSize: 48, color: "#b28a9a", mb: {xs: 0, md: 2} }} />
 
         <Typography
           sx={{
             fontFamily: "'Dancing Script', cursive",
-            fontSize: 46,
+            fontSize: {xs: 32, sm: 46},
             fontWeight: 600,
             color: "#b28a9a",
           }}
@@ -182,7 +184,7 @@ export default function GuestBookSection() {
           Sổ Lưu Bút
         </Typography>
 
-        <Typography sx={{ maxWidth: 580, mx: "auto", mt: 2, mb: 8, fontSize: 18, color: "#7b6c75" }}>
+        <Typography sx={{ maxWidth: 580, mx: "auto", mt: {xs: 1, dm: 2}, mb: {xs: 4, md: 8}, fontSize: {xs: 16, sm: 18}, color: "#7b6c75" }}>
           Hãy để lại lời chúc dành cho chúng mình nhé 💗
         </Typography>
       </Box>
@@ -195,13 +197,13 @@ export default function GuestBookSection() {
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
           gap: 4,
-          px: 2,
+          px: {xs: 0, sm: 2},
         }}
       >
         {/* FORM */}
-        <Paper sx={{ flex: 1, p: 3, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
+        <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
           {warning && (
-            <Alert severity="warning" sx={{ mb: 3, borderRadius: 2, fontSize: 14 }}>
+            <Alert severity="warning" sx={{ mb: {xs: 2, sm: 3}, borderRadius: 2, fontSize: 14 }}>
               {warning}
             </Alert>
           )}
@@ -210,7 +212,7 @@ export default function GuestBookSection() {
             fullWidth
             label="Tên của bạn *"
             size="small"
-            sx={{ mb: 3 }}
+            sx={{ mb: {xs: 2, sm: 3} }}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -220,8 +222,8 @@ export default function GuestBookSection() {
             label="Lời chúc của bạn *"
             size="small"
             multiline
-            minRows={5}
-            sx={{ mb: 4 }}
+            minRows={isMobile ? 3 : 5}
+            sx={{ mb: {xs: 3, sm: 4} }}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
@@ -245,7 +247,7 @@ export default function GuestBookSection() {
         </Paper>
 
         {/* Suggest */}
-        <Paper sx={{ flex: 1, p: 3, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
+        <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
           <Button
             onClick={randomSuggest}
             fullWidth

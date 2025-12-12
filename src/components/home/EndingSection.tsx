@@ -1,15 +1,18 @@
+import { Box, Typography } from "@mui/material";
 import ImageWrapper from "./ImageWrapper";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function EndingSection() {
+  const {isMobile} = useResponsive();
   return (
     <ImageWrapper
       src="https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress"
       isCompactWidth
       height={700}
-      opacity={0.3}
+      opacity={0.4}
     >
-      <div
-        style={{
+      <Box
+        sx={{
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -21,30 +24,30 @@ export default function EndingSection() {
           gap: "12px",
         }}
       >
-        <h2
-          style={{
+        <Typography
+          sx={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "52px",
+            fontSize: {xs: 40, sm: "52px"},
             fontWeight: 600,
             margin: 0,
           }}
         >
           Thank You!
-        </h2>
+        </Typography>
 
-        <p
-          style={{
+        <Typography
+          sx={{
             fontFamily: "'Dancing Script', cursive",
-            fontSize: "34px",
+            fontSize: {xs: 26, sm: "34px"},
             margin: 0,
           }}
         >
           Minh Hoàng & Khánh Huyền
-        </p>
+        </Typography>
 
-        <div style={{ fontSize: "28px" }}>❤️❤️❤️</div>
+        <Box sx={{ fontSize: "28px" }}>❤️❤️❤️</Box>
 
-        <p
+        <Typography
           style={{
             fontSize: "18px",
             maxWidth: "780px",
@@ -54,8 +57,8 @@ export default function EndingSection() {
           }}
         >
           {'Cảm ơn bạn đã dành thời gian ghé thăm thiệp cưới online của chúng mình.\nSự hiện diện của bạn trong ngày trọng đại là niềm hạnh phúc to lớn.'}
-        </p>
-      </div>
+        </Typography>
+      </Box>
     </ImageWrapper>
   )
 }

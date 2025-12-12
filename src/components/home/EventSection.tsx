@@ -165,10 +165,10 @@ const EventCard = ({ event }: { event: TEvent }) => {
       <Box
         sx={{
           position: "absolute",
-          top: {xs: -50 ,sm: -70},
+          top: {xs: -44 ,sm: -70},
           right: {xs: 8, sm: 16},
-          width: {xs: 160, sm: 220},
-          height: {xs: 100, sm: 140},
+          width: {xs: '42%', sm: 220},
+          height: {xs: 80, sm: 140},
           borderRadius: 2,
           overflow: "hidden",
           boxShadow: "0 6px 26px rgba(0,0,0,0.35)",
@@ -326,7 +326,7 @@ export default function EventSection() {
             mt: 1,
             fontSize: 16,
             color: "#555",
-            mb: 14,
+            mb: {xs: 12, sm: 14},
           }}
         >
           Hân hạnh đón tiếp Quý khách!
@@ -339,7 +339,7 @@ export default function EventSection() {
             flexWrap: "wrap",
             justifyContent: "space-between",
             rowGap: 12,
-            px: {xs: 2, sm: 0}
+            px: {xs: 1, sm: 0}
           }}
         >
           {EVENTS.map((event) => (
