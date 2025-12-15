@@ -137,8 +137,8 @@ const fadeUp = (delay = 0): Variants => ({
                 mt: 3,
                 display: "flex",
                 justifyContent: { xs: "space-between", sm: "center" },
-                px: "20px",
-                gap: { xs: 2, sm: 5 },
+                px: {xs: "8px", sm: "20px"},
+                gap: {xs: 2, sm: 5}
               }}
             >
               <PrimaryButton
