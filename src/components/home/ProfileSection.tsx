@@ -15,6 +15,9 @@ import SharedImage from "../SharedImage";
 import { Icon } from '@iconify/react';
 import { MAIN_COLOR } from "../../constants/common";
 import { useResponsive } from "../../hooks/useResponsive";
+// === ADD ===
+import { motion, Variants } from "framer-motion";
+
 
 interface ProfileItem {
   id: number;
@@ -153,6 +156,39 @@ export default function ProfileSection() {
   const {compactWidth} = useContentWidth();
   const {isMobile} = useResponsive();
 
+    // === ADD animation config (FADE XA – SCROLL XUỐNG MỚI HIỆN) ===
+  const fadeFar: Variants = {
+    hidden: {
+      opacity: 0,
+      y: isMobile ? 30 : 60,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMobile ? 0.6 : 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const fadeFarDelay = (delay: number): Variants => ({
+    hidden: {
+      opacity: 0,
+      y: isMobile ? 30 : 60,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMobile ? 0.6 : 0.9,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  });
+
+
   // Lấy id profile tương ứng tab
   const activeId = TABS[tab].targetId;
 
@@ -172,15 +208,36 @@ export default function ProfileSection() {
             sx={{ mb: {xs: 2, md: 6} }}
             direction="row"
           >
-            <Grid item xs={12} md={6} sx={{mx: {xs: 1, sm: 0}}}>
-              <SharedImage
-                src={p.image}
-                alt={p.name}
-                style={{ width: "100%", display: "block", borderRadius: isMobile ? 2 : 4, height: isMobile ? 500 : 700 }}
-              />
+                        <Grid item xs={12} md={6} sx={{mx: {xs: 1, sm: 0}}}>
+              {/* === ADD motion wrapper === */}
+              <motion.div
+                variants={fadeFar}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-120px" }}
+              >
+                <SharedImage
+                  src={p.image}
+                  alt={p.name}
+                  style={{
+                    width: "100%",
+                    display: "block",
+                    borderRadius: isMobile ? 2 : 4,
+                    height: isMobile ? 500 : 700
+                  }}
+                />
+              </motion.div>
             </Grid>
 
+
             <Grid item xs={12} md={6} sx={{mx: {xs: 1, sm: 0}}}>
+              <motion.div
+                variants={fadeFarDelay(0.15)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-120px" }}
+                style={{height: '100%'}}
+              >
               <Paper
                 sx={{
                   p: 2.5,
@@ -269,6 +326,7 @@ export default function ProfileSection() {
                   </Typography>
                 </Box>
               </Paper>
+              </motion.div>
             </Grid>
           </Grid>
         ))}

@@ -16,14 +16,14 @@ export default function TopSection() {
   const titleVariant: Variants = {
   hidden: {
     opacity: 0,
-    y: isMobile ? 20 : 40,
+    y: isMobile ? 20 : 40, // ↓ giảm
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: isMobile ? 0.6 : 0.9,
-      ease: [0.22, 1, 0.36, 1], // ✅ FIX
+      duration: isMobile ? 0.6 : 0.85,
+      ease: [0.25, 0.8, 0.25, 1], // 👈 mượt hơn, ít bật
     },
   },
 };
@@ -31,18 +31,19 @@ export default function TopSection() {
 const fadeUp = (delay = 0): Variants => ({
   hidden: {
     opacity: 0,
-    y: isMobile ? 15 : 30,
+    y: isMobile ? 12 : 24, // ↓ giảm
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: isMobile ? 0.5 : 0.8,
+      duration: isMobile ? 0.45 : 0.7,
       delay,
-      ease: [0.22, 1, 0.36, 1], // ✅ FIX
+      ease: [0.25, 0.8, 0.25, 1], // 👈 mượt
     },
   },
 });
+
 
   /* ==================================================== */
 
@@ -65,7 +66,8 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={titleVariant}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            style={{ willChange: "transform, opacity" }}
             viewport={{ once: true }}
           >
             <Typography
@@ -87,7 +89,8 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.15)}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            style={{ willChange: "transform, opacity" }}
             viewport={{ once: true }}
           >
             <Typography
@@ -108,7 +111,8 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.3)}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            style={{ willChange: "transform, opacity" }}
             viewport={{ once: true }}
           >
             <Typography
@@ -128,7 +132,8 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.45)}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            style={{ willChange: "transform, opacity" }}
             viewport={{ once: true }}
           >
             <Box
