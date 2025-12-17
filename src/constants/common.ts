@@ -1,3 +1,6 @@
+import { TEvent } from "../interfaces/common";
+import { scrollToSection } from "../utils/common";
+
 export const INITIAL_PAGE = 1;
 export const PER_PAGE = 10;
 
@@ -98,3 +101,114 @@ export const idPage = {
   event: 'event-page',
   gift: 'gift-page'
 }
+
+const openCalendar = (event: TEvent) => {
+  const text = event.title;
+  const details = `${event.placeLabel} - ${event.address}`;
+  const location = event.address;
+
+  const start = "20260601T080000";
+  const end = "20260601T100000";
+
+  const link = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+    text
+  )}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(
+    location
+  )}&dates=${start}/${end}`;
+
+  window.open(link, "_blank");
+};
+
+export const EVENTS: TEvent[] = [
+  {
+    id: "bride-party",
+    title: "Tiệc Cưới Nhà Gái",
+    time: "11h00 Thứ 3, ngày 13/01/2026",
+    placeLabel: "TTTM Himlam Plaza",
+    address: "Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên",
+    image:
+      "https://images.pexels.com/photos/4644406/pexels-photo-4644406.jpeg",
+    primaryBtn: "Xem chỉ đường",
+    secondaryBtn: "Thêm vào lịch",
+
+    onPrimaryClick: () => window.open(
+      'https://maps.app.goo.gl/G1MjgcMdq8SkBski8',
+      "_blank"
+    ),
+    onSecondaryClick: () =>
+      openCalendar({
+        id: "bride-party",
+        title: "Tiệc Cưới Nhà Gái",
+        time: "",
+        placeLabel: "",
+        address: "TTTM Himlam Plaza: Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên",
+        image: "",
+        primaryBtn: "",
+        secondaryBtn: "",
+      }),
+  },
+
+  {
+    id: "le-vu-quy",
+    title: "Lễ Vu Quy",
+    time: "10h00 Thứ 3, ngày 13/01/2026",
+    placeLabel: "Tư gia nhà Gái",
+    address: "Ngõ 175 - Tổ 6 Đường Sùng Phái Sinh, Phường Điện Biên Phủ, Điện Biên",
+    image:
+      "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
+    primaryBtn: "Xem chỉ đường",
+    secondaryBtn: "Mừng cưới",
+
+    onPrimaryClick: () => window.open(
+      'https://maps.app.goo.gl/vZ8EQJJL7TFHXUw36',
+      "_blank"
+    ),
+    onSecondaryClick: () => scrollToSection(idPage.gift),
+  },
+
+  {
+    id: "groom-party",
+    title: "Tiệc Cưới Nhà Trai",
+    time: "11h00 Chủ Nhật, ngày 02/06/2026",
+    placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
+    address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
+    image:
+      "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
+    primaryBtn: "Xem chỉ đường",
+    secondaryBtn: "Thêm vào lịch",
+
+    onPrimaryClick: () => window.open(
+      'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
+      "_blank"
+    ),
+    onSecondaryClick: () =>
+      openCalendar({
+        id: "groom-party",
+        title: "Tiệc Cưới Nhà Trai",
+        time: "",
+        placeLabel: "",
+        address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
+        image: "",
+        primaryBtn: "",
+        secondaryBtn: "",
+      }),
+  },
+
+  {
+    id: "le-thanh-hon",
+    title: "Lễ Thành Hôn",
+    time: "10h30 Chủ Nhật, ngày 02/06/2026",
+    placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
+    address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
+    image:
+      "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+    primaryBtn: "Xem chỉ đường",
+    secondaryBtn: "Mừng cưới",
+
+    onPrimaryClick: () => window.open(
+      'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
+      "_blank"
+    ),
+    onSecondaryClick: () => scrollToSection(idPage.gift),
+  },
+];

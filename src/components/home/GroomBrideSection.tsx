@@ -4,10 +4,13 @@ import SharedImage from "../SharedImage";
 import { MAIN_COLOR } from "../../constants/common";
 import { useResponsive } from "../../hooks/useResponsive";
 
+// === ADD ===
+import { motion, Variants } from "framer-motion";
+
 const PersonCard = ({ image, name, father, mother, address, nameType }: any) => (
   <Box
     sx={{
-      width: {xs: "50%", md: '40%'},
+      width: '100%',
       background: {xs: 'none', sm: "rgba(255,255,255,0.85)"},
       borderRadius: "14px",
       border: {xs: "none", sm: "1.7px solid rgba(200,150,70,0.65)"},
@@ -22,7 +25,6 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
       }
     }}
   >
-    {/* Ảnh */}
     <Box
       component="img"
       src={image}
@@ -39,7 +41,6 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
       }}
     />
 
-    {/* Tên */}
     <Typography
       sx={{
         mt: {xs: 1.5, sm: 2.5},
@@ -54,7 +55,6 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
 
     <Typography sx={{ fontSize: 20, opacity: 0.55 }}>♡</Typography>
 
-    {/* Nhà */}
     <Typography
       sx={{
         fontFamily: "'Cormorant Garamond', serif",
@@ -68,7 +68,6 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
       {nameType}
     </Typography>
 
-    {/* Cha mẹ */}
     <Typography
       sx={{
         fontFamily: "'Cormorant Garamond', serif",
@@ -87,13 +86,68 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
   </Box>
 );
 
-
 export default function GroomBrideSection() {
   const { compactWidth } = useContentWidth();
   const {isMobile} = useResponsive();
 
+  /* ================= ANIMATION CONFIG ================= */
+
+  const fadeFar: Variants = {
+    hidden: {
+      opacity: 0,
+      y: isMobile ? 60 : 120,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const slideLeft: Variants = {
+    hidden: {
+      opacity: 0,
+      x: isMobile ? -30 : -80,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const slideRight: Variants = {
+    hidden: {
+      opacity: 0,
+      x: isMobile ? 30 : 80,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  /* ==================================================== */
+
   return (
-    <Box sx={{ width: "100%", pb: {xs: 0, sm: 9}, mt: 4, display: "flex", justifyContent: "center", background: 'rgb(248, 246, 246)' }}>
+    <Box
+      component={motion.div}
+      variants={fadeFar}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-160px" }}
+      sx={{ width: "100%", pb: {xs: 0, sm: 9}, mt: 4, display: "flex", justifyContent: "center", background: 'rgb(248, 246, 246)' }}
+    >
       <Box
         sx={{
           width: compactWidth,
@@ -109,8 +163,6 @@ export default function GroomBrideSection() {
           alignItems: "center",
         }}
       >
-
-        {/* Gradient overlay sang trọng hơn */}
         <Box
           sx={{
             position: "absolute",
@@ -122,44 +174,74 @@ export default function GroomBrideSection() {
           }}
         />
 
-        {/* CONTENT */}
         <Box sx={{ position: "relative", zIndex: 2, textAlign: "center", py: {xs: 3, md: 4} }}>
-          <SharedImage src="/images/marriage_icon.png" width={isMobile ? 48 : 75} style={{ margin: "0 auto" }} />
-
-          <Typography
-            variant="h3"
-            sx={{
-              fontFamily: "'Dancing Script', cursive",
-              fontWeight: 600,
-              letterSpacing: 1,
-              color: 'rgb(54, 54, 54)',
-              fontSize: {xs: 32, md: 40},
-              mt: 1,
-              mb: {xs: 2, sm: 3, md: 5},
-            }}
+          
+          <motion.div
+            variants={fadeFar}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-160px" }}
           >
-            Chú Rể & Cô Dâu
-          </Typography>
+            <SharedImage src="/images/marriage_icon.png" width={isMobile ? 48 : 75} style={{ margin: "0 auto" }} />
 
-          {/* Flex layout card */}
+            <Typography
+              variant="h3"
+              sx={{
+                fontFamily: "'Dancing Script', cursive",
+                fontWeight: 600,
+                letterSpacing: 1,
+                color: 'rgb(54, 54, 54)',
+                fontSize: {xs: 32, md: 40},
+                mt: 1,
+                mb: {xs: 2, sm: 3, md: 5},
+              }}
+            >
+              Chú Rể & Cô Dâu
+            </Typography>
+          </motion.div>
+
           <Box display="flex" flexDirection={'row'} gap={{xs: 1, sm: 2, md: 6}} justifyContent="center" px={{xs: 1, sm: 2, md: 0}}>
-            <PersonCard
-              image="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg"
-              name="Minh Hoàng"
-              father="Trần Quang Huy"
-              mother="Nguyễn Thị Vân"
-              address="Nhà văn hóa tổ 14, Đức Giang: số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội"
-              nameType="NHÀ TRAI"
-            />
 
-            <PersonCard
-              image="https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527"
-              name="Khánh Huyền"
-              father="Nguyễn Trọng Nam"
-              mother="Nguyễn Thị Cúc"
-              address="TTTM Himlam Plaza: Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên"
-              nameType="NHÀ GÁI"
-            />
+            <Box
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-160px" }}
+              component={motion.div}
+              sx={{
+                width: {xs: "50%", md: '40%'}
+              }}
+            >
+              <PersonCard
+                image="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg"
+                name="Minh Hoàng"
+                father="Trần Quang Huy"
+                mother="Nguyễn Thị Vân"
+                address="Nhà văn hóa tổ 14, Đức Giang: số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội"
+                nameType="NHÀ TRAI"
+              />
+            </Box>
+
+            <Box
+              variants={slideRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-160px" }}
+              component={motion.div}
+              sx={{
+                width: {xs: "50%", md: '40%'}
+              }}
+            >
+              <PersonCard
+                image="https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527"
+                name="Khánh Huyền"
+                father="Nguyễn Trọng Nam"
+                mother="Nguyễn Thị Cúc"
+                address="TTTM Himlam Plaza: Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên"
+                nameType="NHÀ GÁI"
+              />
+            </Box>
+
           </Box>
         </Box>
       </Box>

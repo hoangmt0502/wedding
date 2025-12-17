@@ -13,6 +13,7 @@ import {
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { GOOGLE_SCRIPT_URL, idPage, suggestions } from "../../constants/common";
 import { useResponsive } from "../../hooks/useResponsive";
+import { Variants, motion } from "framer-motion";
 
 export default function GuestBookSection() {
   const [name, setName] = useState("");
@@ -24,6 +25,51 @@ export default function GuestBookSection() {
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const {isMobile} = useResponsive();
+
+  const fadeUp: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const fadeLeft: Variants = {
+    hidden: {
+      opacity: 0,
+      x: -80,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const fadeRight: Variants = {
+    hidden: {
+      opacity: 0,
+      x: 80,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   // 🎁 Random
   const randomSuggest = () => {
@@ -170,24 +216,31 @@ export default function GuestBookSection() {
       />
 
       {/* Header */}
-      <Box textAlign="center">
-        <FavoriteBorderOutlinedIcon sx={{ fontSize: 48, color: "#b28a9a", mb: {xs: 0, md: 2} }} />
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <Box textAlign="center">
+          <FavoriteBorderOutlinedIcon sx={{ fontSize: 48, color: "#b28a9a", mb: {xs: 0, md: 2} }} />
 
-        <Typography
-          sx={{
-            fontFamily: "'Dancing Script', cursive",
-            fontSize: {xs: 32, sm: 46},
-            fontWeight: 600,
-            color: "#b28a9a",
-          }}
-        >
-          Sổ Lưu Bút
-        </Typography>
+          <Typography
+            sx={{
+              fontFamily: "'Dancing Script', cursive",
+              fontSize: {xs: 32, sm: 46},
+              fontWeight: 600,
+              color: "#b28a9a",
+            }}
+          >
+            Sổ Lưu Bút
+          </Typography>
 
-        <Typography sx={{ maxWidth: 580, mx: "auto", mt: {xs: 1, dm: 2}, mb: {xs: 4, md: 8}, fontSize: {xs: 16, sm: 18}, color: "#7b6c75" }}>
-          Hãy để lại lời chúc dành cho chúng mình nhé 💗
-        </Typography>
-      </Box>
+          <Typography sx={{ maxWidth: 580, mx: "auto", mt: {xs: 1, dm: 2}, mb: {xs: 4, md: 8}, fontSize: {xs: 16, sm: 18}, color: "#7b6c75" }}>
+            Hãy để lại lời chúc dành cho chúng mình nhé 💗
+          </Typography>
+        </Box>
+      </motion.div>
 
       {/* Main */}
       <Box
@@ -201,94 +254,110 @@ export default function GuestBookSection() {
         }}
       >
         {/* FORM */}
-        <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
-          {warning && (
-            <Alert severity="warning" sx={{ mb: {xs: 2, sm: 3}, borderRadius: 2, fontSize: 14 }}>
-              {warning}
-            </Alert>
-          )}
+        <motion.div
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          style={{ flex: 1 }}
+        >
+          <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
+            {warning && (
+              <Alert severity="warning" sx={{ mb: {xs: 2, sm: 3}, borderRadius: 2, fontSize: 14 }}>
+                {warning}
+              </Alert>
+            )}
 
-          <TextField
-            fullWidth
-            label="Tên của bạn *"
-            size="small"
-            sx={{ mb: {xs: 2, sm: 3} }}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+            <TextField
+              fullWidth
+              label="Tên của bạn *"
+              size="small"
+              sx={{ mb: {xs: 2, sm: 3} }}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-          <TextField
-            fullWidth
-            label="Lời chúc của bạn *"
-            size="small"
-            multiline
-            minRows={isMobile ? 3 : 5}
-            sx={{ mb: {xs: 3, sm: 4} }}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+            <TextField
+              fullWidth
+              label="Lời chúc của bạn *"
+              size="small"
+              multiline
+              minRows={isMobile ? 3 : 5}
+              sx={{ mb: {xs: 3, sm: 4} }}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
 
-          <Button
-            fullWidth
-            variant="contained"
-            disabled={loading}
-            onClick={handleSubmit}
-            sx={{
-              borderRadius: 999,
-              py: 1.4,
-              fontSize: 15,
-              textTransform: "none",
-              background: loading ? "#cbb8c1" : "#b28a9a",
-              "&:hover": { background: loading ? "#cbb8c1" : "#9a7386" },
-            }}
-          >
-            {loading ? <CircularProgress size={22} sx={{ color: "#fff" }} /> : "Gửi lời chúc"}
-          </Button>
-        </Paper>
+            <Button
+              fullWidth
+              variant="contained"
+              disabled={loading}
+              onClick={handleSubmit}
+              sx={{
+                borderRadius: 999,
+                py: 1.4,
+                fontSize: 15,
+                textTransform: "none",
+                background: loading ? "#cbb8c1" : "#b28a9a",
+                "&:hover": { background: loading ? "#cbb8c1" : "#9a7386" },
+              }}
+            >
+              {loading ? <CircularProgress size={22} sx={{ color: "#fff" }} /> : "Gửi lời chúc"}
+            </Button>
+          </Paper>
+        </motion.div>
 
         {/* Suggest */}
-        <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
-          <Button
-            onClick={randomSuggest}
-            fullWidth
-            sx={{
-              mb: 3,
-              borderRadius: 999,
-              border: "1px solid #b28a9a",
-              textTransform: "none",
-              color: "#b28a9a",
-              fontSize: 14,
-              "&:hover": { background: "rgba(178,138,154,0.1)" },
-            }}
-          >
-            🎁 Gợi ý ngẫu nhiên
-          </Button>
+        <motion.div
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          style={{ flex: 1 }}
+        >
+          <Paper sx={{ flex: 1, p: {xs: 2, sm: 3}, borderRadius: 3, background: "#fff", border: "1px solid #eee" }}>
+            <Button
+              onClick={randomSuggest}
+              fullWidth
+              sx={{
+                mb: 3,
+                borderRadius: 999,
+                border: "1px solid #b28a9a",
+                textTransform: "none",
+                color: "#b28a9a",
+                fontSize: 14,
+                "&:hover": { background: "rgba(178,138,154,0.1)" },
+              }}
+            >
+              🎁 Gợi ý ngẫu nhiên
+            </Button>
 
-          <Box sx={{overflowY: 'auto'}} height={300}>
-            {suggestions.map((s, i) => (
-              <Box key={i} sx={{ mb: 3, textAlign: 'left' }}>
-                <Typography sx={{ fontSize: 14, color: "#666", lineHeight: 1.6 }}>
-                  {s.message}
-                </Typography>
-  
-                <Button
-                  size="small"
-                  onClick={() => setMessage(s.message)}
-                  sx={{
-                    textTransform: "none",
-                    color: "#b28a9a",
-                    fontSize: 12,
-                    mt: 1,
-                  }}
-                >
-                  📌 Dùng lời chúc này
-                </Button>
-  
-                {i < suggestions.length - 1 && <Divider sx={{ my: 2 }} />}
-              </Box>
-            ))}
-          </Box>
-        </Paper>
+            <Box sx={{overflowY: 'auto'}} height={300}>
+              {suggestions.map((s, i) => (
+                <Box key={i} sx={{ mb: 3, textAlign: 'left' }}>
+                  <Typography sx={{ fontSize: 14, color: "#666", lineHeight: 1.6 }}>
+                    {s.message}
+                  </Typography>
+    
+                  <Button
+                    size="small"
+                    onClick={() => setMessage(s.message)}
+                    sx={{
+                      textTransform: "none",
+                      color: "#b28a9a",
+                      fontSize: 12,
+                      mt: 1,
+                    }}
+                  >
+                    📌 Dùng lời chúc này
+                  </Button>
+    
+                  {i < suggestions.length - 1 && <Divider sx={{ my: 2 }} />}
+                </Box>
+              ))}
+            </Box>
+          </Paper>
+        </motion.div>
       </Box>
     </Box>
   );

@@ -6,44 +6,41 @@ import { scrollToSection } from "../../utils/common";
 import { useResponsive } from "../../hooks/useResponsive";
 import { motion, Variants } from "framer-motion";
 
-
 export default function TopSection() {
   const { isTablet, isMobile } = useResponsive();
 
   /* ================= ANIMATION CONFIG ================= */
 
-  // Dịch chuyển ít hơn trên mobile
   const titleVariant: Variants = {
-  hidden: {
-    opacity: 0,
-    y: isMobile ? 20 : 40, // ↓ giảm
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: isMobile ? 0.6 : 0.85,
-      ease: [0.25, 0.8, 0.25, 1], // 👈 mượt hơn, ít bật
+    hidden: {
+      opacity: 0,
+      y: isMobile ? 24 : 48,
     },
-  },
-};
-
-const fadeUp = (delay = 0): Variants => ({
-  hidden: {
-    opacity: 0,
-    y: isMobile ? 12 : 24, // ↓ giảm
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: isMobile ? 0.45 : 0.7,
-      delay,
-      ease: [0.25, 0.8, 0.25, 1], // 👈 mượt
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMobile ? 0.7 : 1,
+        ease: [0.22, 1, 0.36, 1],
+      },
     },
-  },
-});
+  };
 
+  const fadeUp = (delay = 0): Variants => ({
+    hidden: {
+      opacity: 0,
+      y: isMobile ? 16 : 32,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMobile ? 0.6 : 0.85,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  });
 
   /* ==================================================== */
 
@@ -66,9 +63,9 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={titleVariant}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-120px" }}
             style={{ willChange: "transform, opacity" }}
-            viewport={{ once: true }}
           >
             <Typography
               variant="h1"
@@ -89,9 +86,9 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.15)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-120px" }}
             style={{ willChange: "transform, opacity" }}
-            viewport={{ once: true }}
           >
             <Typography
               variant="h4"
@@ -111,9 +108,9 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.3)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-120px" }}
             style={{ willChange: "transform, opacity" }}
-            viewport={{ once: true }}
           >
             <Typography
               variant="body1"
@@ -132,9 +129,9 @@ const fadeUp = (delay = 0): Variants => ({
           <motion.div
             variants={fadeUp(0.45)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-120px" }}
             style={{ willChange: "transform, opacity" }}
-            viewport={{ once: true }}
           >
             <Box
               sx={{
@@ -142,8 +139,8 @@ const fadeUp = (delay = 0): Variants => ({
                 mt: 3,
                 display: "flex",
                 justifyContent: { xs: "space-between", sm: "center" },
-                px: {xs: "8px", sm: "20px"},
-                gap: {xs: 2, sm: 5}
+                px: { xs: "8px", sm: "20px" },
+                gap: { xs: 2, sm: 5 },
               }}
             >
               <PrimaryButton

@@ -16,16 +16,55 @@ import SharedImage from "../SharedImage";
 import { ExpandMore } from "@mui/icons-material";
 import { useResponsive } from "../../hooks/useResponsive";
 
+// === ADD ===
+import { motion, Variants } from "framer-motion";
+
 const allImages = [...COLLECTION_LEFT, ...COLLECTION_RIGHT];
 
 const CollectionSection = () => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
-  const {isMobile} = useResponsive();
+  const { isMobile } = useResponsive();
 
-  const {compactWidth, mainWidth} = useContentWidth();
-
+  const { compactWidth } = useContentWidth();
   const thumbRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // === ADD animation config ===
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: isMobile ? 60 : 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const slideLeft: Variants = {
+    hidden: { opacity: 0, x: isMobile ? -60 : -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const slideRight: Variants = {
+    hidden: { opacity: 0, x: isMobile ? 60 : 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   const openViewer = (index: number) => {
     setCurrent(index);
@@ -52,17 +91,33 @@ const CollectionSection = () => {
   }, [current]);
 
   return (
-    <Box sx={{py: {xs: 3, sm: 6}, backgroundColor: '#f5f3f3ff'}}>
-      <Box sx={{ width: compactWidth, mx: 'auto' }}>
-        <Box sx={{mx: {xs: 1, sm: 0}}}>
-          <Stack alignItems={'center'} mb={{xs: 2, sm: 4}}><SharedImage src="/images/logo.png" width={isMobile ? 100 : 160}/></Stack>
+    <Box
+      component={motion.div}                // === ADD ===
+      variants={fadeUp}                     // === ADD ===
+      initial="hidden"                      // === ADD ===
+      whileInView="visible"                 // === ADD ===
+      viewport={{ once: true, margin: "-120px" }} // === ADD ===
+      sx={{ py: { xs: 3, sm: 6 }, backgroundColor: "#f5f3f3ff" }}
+    >
+      <Box sx={{ width: compactWidth, mx: "auto" }}>
+        <Box sx={{ mx: { xs: 1, sm: 0 } }}>
+          <Stack alignItems="center" mb={{ xs: 2, sm: 4 }}>
+            <SharedImage src="/images/logo.png" width={isMobile ? 100 : 160} />
+          </Stack>
+
           <Typography
             variant="h5"
-            sx={{ mb: 4, fontWeight: 600, letterSpacing: 1, color: MAIN_COLOR, fontSize: {xs: 22, sm: '2.2rem'} }}
+            sx={{
+              mb: 4,
+              fontWeight: 600,
+              letterSpacing: 1,
+              color: MAIN_COLOR,
+              fontSize: { xs: 22, sm: "2.2rem" },
+            }}
           >
             BỘ SƯU TẬP ẢNH CƯỚI
           </Typography>
-    
+
           {/* 2 column layout */}
           <Box
             sx={{
@@ -76,6 +131,11 @@ const CollectionSection = () => {
               {COLLECTION_LEFT.map((src, idx) => (
                 <Box
                   key={src + idx}
+                  component={motion.div}     // === ADD ===
+                  variants={slideLeft}       // === ADD ===
+                  initial="hidden"            // === ADD ===
+                  whileInView="visible"       // === ADD ===
+                  viewport={{ once: true, margin: isMobile ? "-60px" : "-120px" }} // === ADD ===
                   sx={{
                     width: "100%",
                     borderRadius: 2,
@@ -91,13 +151,18 @@ const CollectionSection = () => {
                 </Box>
               ))}
             </Box>
-    
+
             {/* RIGHT COLUMN */}
             <Box sx={{ flex: 0.63, display: "flex", flexDirection: "column", gap: 2 }}>
               {COLLECTION_RIGHT.map((src, idx) => (
                 <Box
                   key={src + idx}
-                  style={{
+                  component={motion.div}     // === ADD ===
+                  variants={slideRight}      // === ADD ===
+                  initial="hidden"            // === ADD ===
+                  whileInView="visible"       // === ADD ===
+                  viewport={{ once: true, margin: "-120px" }} // === ADD ===
+                  sx={{
                     width: "100%",
                     height: "auto",
                     objectFit: "cover",
@@ -115,14 +180,24 @@ const CollectionSection = () => {
               ))}
             </Box>
           </Box>
-    
-          <Button variant="text" onClick={() => setOpen(true)} sx={{ mt: {xs: 2, sm: 4}, fontSize: {xs: 18,sm: '1.5rem'}, flexDirection: 'column', px: 2 }} color="secondary">
+
+          <Button
+            variant="text"
+            onClick={() => setOpen(true)}
+            sx={{
+              mt: { xs: 2, sm: 4 },
+              fontSize: { xs: 18, sm: "1.5rem" },
+              flexDirection: "column",
+              px: 2,
+            }}
+            color="secondary"
+          >
             XEM THÊM
-            <ExpandMore fontSize={isMobile ? 'medium' : 'large'} />
+            <ExpandMore fontSize={isMobile ? "medium" : "large"} />
           </Button>
         </Box>
-  
-        {/* POPUP */}
+
+        {/* POPUP – GIỮ NGUYÊN */}
         <Dialog fullScreen open={open} onClose={closeViewer}>
           <Box
             sx={{

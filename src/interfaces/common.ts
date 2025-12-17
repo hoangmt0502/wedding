@@ -132,3 +132,16 @@ export type TImageUpload = {
   type: string;
   size: number;
 }
+
+export type TEvent = {
+  id: string;
+  title: string;
+  time: string;
+  placeLabel: string;
+  address: string;
+  image: string;
+  primaryBtn: string;
+  secondaryBtn: string;
+  onPrimaryClick?: () => void;
+  onSecondaryClick?: () => void;
+};

@@ -4,6 +4,7 @@ import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import GiftQRModal from "./GiftQRModal";
 import ImageWrapper from "./ImageWrapper";
 import { idPage } from "../../constants/common";
+import { motion } from "framer-motion";
 
 export default function WeddingGiftSection() {
   const [openQR, setOpenQR] = useState(false);
@@ -20,6 +21,14 @@ export default function WeddingGiftSection() {
       >
         <Stack alignItems={'center'} justifyContent={'center'} height={'100%'} width={'100%'}>
           <Box
+            component={motion.div}
+            initial={{ opacity: 0, y: 120 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-160px" }}
+            transition={{
+              duration: 1.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             sx={{
               position: "relative",
               textAlign: "center",
@@ -37,7 +46,7 @@ export default function WeddingGiftSection() {
             >
               Hộp mừng cưới
             </Typography>
-  
+
             <Typography
               sx={{
                 fontSize: 18,
@@ -47,9 +56,18 @@ export default function WeddingGiftSection() {
             >
               Cảm ơn tất cả các tình cảm mà mọi người đã dành cho Hoàng & Huyền
             </Typography>
-  
+
             {/* Nút mở modal */}
             <Box
+              component={motion.div}
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-160px" }}
+              transition={{
+                duration: 0.8,
+                delay: 0.25,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               onClick={() => setOpenQR(true)}
               sx={{
                 display: "inline-flex",
