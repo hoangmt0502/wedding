@@ -8,7 +8,8 @@ export default function ImageWrapper({
   isCompactWidth = false, 
   height = 850,
   opacity = 0.1,
-  id
+  id,
+  backgroundPosition = 'center'
 } : {
   src: string; 
   children: ReactNode; 
@@ -16,6 +17,7 @@ export default function ImageWrapper({
   height?: number | string;
   opacity?: number;
   id?: string;
+  backgroundPosition?: string;
 }) {
   const {mainWidth, compactWidth} = useContentWidth();
   const backgroundImageUrl = `linear-gradient(rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity})), url('${src}')`; 
@@ -37,7 +39,7 @@ export default function ImageWrapper({
         sx={{
         backgroundImage: backgroundImageUrl,
         backgroundSize: 'cover', 
-        backgroundPosition: 'center',
+        backgroundPosition,
         backgroundRepeat: 'no-repeat',
         width: isCompactWidth ? compactWidth : mainWidth,
         height: '100%',

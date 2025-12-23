@@ -142,7 +142,7 @@ export default function StorySection() {
                 <CardMedia
                   component="img"
                   height={isMobile ? "240" : "380"}
-                  image="https://daknong.1cdn.vn/2025/07/25/1(1).jpg"
+                  image="/collections/web/HLE08843.jpg"
                   alt="wedding"
                   sx={{ objectFit: "cover", borderRadius: 2 }}
                 />
@@ -167,9 +167,9 @@ export default function StorySection() {
                     <CardMedia
                       component="img"
                       height={isMobile ? "200" : !isTablet ? "320" : "400"}
-                      image="https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png"
+                      image="/collections/web/HLE09021.jpg"
                       alt="wedding"
-                      sx={{ objectFit: "cover", borderRadius: 2 }}
+                      sx={{ objectFit: "cover", borderRadius: 2, objectPosition: 'center' }}
                     />
                   </Card>
                 </motion.div>
@@ -190,14 +190,13 @@ export default function StorySection() {
                     <CardMedia
                       component="img"
                       height={isMobile ? "200" : !isTablet ? "320" : "400"}
-                      image="https://mimosawedding.vn/wp-content/uploads/2023/08/phong-chup-anh-cuoi-2.jpg"
+                      image="/collections/web/HLE09186.jpg"
                       alt="wedding"
-                      sx={{ objectFit: "cover", borderRadius: 2 }}
+                      sx={{ objectFit: "cover", borderRadius: 2, objectPosition: 'center' }}
                     />
                   </Card>
                 </motion.div>
               </Grid>
-
             </Grid>
           </Box>
         </Grid>

@@ -81,7 +81,7 @@ function HeaderTabs(props: {
       sx={{
         p: 2,
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${src}')`,
-        backgroundPosition: "50%",
+        backgroundPosition: "0%",
         backgroundSize: "cover",
         mb: {xs: 2, sm: 4},
         mx: {xs: 1, sm: 0},
@@ -150,7 +150,7 @@ function HeaderTabs(props: {
 
 export default function ProfileSection() {
   const src =
-    "https://jejuwedding.vn/wp-content/uploads/2024/11/PLUS3736-scaled.jpg";
+    "/collections/raw/merge_image.jpg";
 
   const [tab, setTab] = useState(0);
   const {compactWidth} = useContentWidth();

@@ -47,7 +47,7 @@ export default function TopSection() {
   return (
     <ImageWrapper
       height={isMobile ? 400 : isTablet ? 500 : 850}
-      src="https://bellabridal.vn/public/upload/files/343342550_5955920044504242_5222768225392896037_n.jpg"
+      src="/collections/raw/HLE08900.jpg"
       opacity={isMobile ? 0.3 : 0.1}
     >
       <Box

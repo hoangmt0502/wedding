@@ -56,10 +56,11 @@ export default function VideoSection() {
   return (
     <>
       <ImageWrapper
-        src="https://tuart.net/wp-content/uploads/2022/01/270284502_1589108414821889_2158477857562109361_n.jpg"
+        src="/collections/raw/HLE09347.jpg"
         opacity={0.4}
-        height={isMobile ? 400 : 700}
+        height={isMobile ? 400 : 740}
         isCompactWidth
+        backgroundPosition="0 34%"
       >
         <Box display="flex" justifyContent="center" alignItems="center" height="100%">
           <Box textAlign="center" color="#fff" mt={{ xs: 10, sm: 30 }} px={2}>
