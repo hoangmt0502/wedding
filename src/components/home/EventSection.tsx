@@ -49,7 +49,7 @@ const EventCard = ({ event }: any) => {
           component="img"
           src={event.image}
           alt={event.title}
-          sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+          sx={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: event?.imagePosition }}
         />
       </Box>
 

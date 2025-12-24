@@ -5,19 +5,22 @@ import GiftQRModal from "./GiftQRModal";
 import ImageWrapper from "./ImageWrapper";
 import { idPage } from "../../constants/common";
 import { motion } from "framer-motion";
+import { useResponsive } from "../../hooks/useResponsive";
 
 export default function WeddingGiftSection() {
   const [openQR, setOpenQR] = useState(false);
+  const {isMobile} = useResponsive()
 
   return (
     <>
       {/* ============ SECTION ============ */}
       <ImageWrapper
-        src="https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress"
+        src="/collections/raw/HLE09129.jpg"
         isCompactWidth
-        height={700}
+        height={isMobile ? 500 : 800}
         opacity={0.7}
         id={idPage.gift}
+        backgroundPosition={isMobile ? "bottom" : "0 60%"}
       >
         <Stack alignItems={'center'} justifyContent={'center'} height={'100%'} width={'100%'}>
           <Box
@@ -34,12 +37,13 @@ export default function WeddingGiftSection() {
               textAlign: "center",
               px: 2,
               color: "#fff",
+              mt: {xs: 8, md: 0}
             }}
           >
             <Typography
               sx={{
                 fontFamily: "'Dancing Script', cursive",
-                fontSize: 48,
+                fontSize: {xs: 32, sm: 48},
                 fontWeight: 600,
                 mb: 2,
               }}
@@ -49,7 +53,7 @@ export default function WeddingGiftSection() {
 
             <Typography
               sx={{
-                fontSize: 18,
+                fontSize: {xs: 14, sm: 18},
                 opacity: 0.85,
                 mb: 5,
               }}
@@ -73,8 +77,8 @@ export default function WeddingGiftSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 90,
-                height: 90,
+                width: {xs: 60, sm: 90},
+                height: {xs: 60, sm: 90},
                 borderRadius: 2,
                 border: "1px solid rgba(255,255,255,0.65)",
                 backdropFilter: "blur(2px)",

@@ -142,6 +142,7 @@ export type TEvent = {
   image: string;
   primaryBtn: string;
   secondaryBtn: string;
+  imagePosition?: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
 };

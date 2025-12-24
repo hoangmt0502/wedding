@@ -151,11 +151,9 @@ export const EVENTS: TEvent[] = [
     time: "11h00 Thứ 3, ngày 13/01/2026",
     placeLabel: "TTTM Himlam Plaza",
     address: "Đường Trần Đăng Ninh, Phường Điện Biên Phủ, Điện Biên",
-    image:
-      "https://images.pexels.com/photos/4644406/pexels-photo-4644406.jpeg",
+    image: "/collections/web/HLE08922.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Thêm vào lịch",
-
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/G1MjgcMdq8SkBski8',
       "_blank"
@@ -179,11 +177,10 @@ export const EVENTS: TEvent[] = [
     time: "10h00 Thứ 3, ngày 13/01/2026",
     placeLabel: "Tư gia nhà Gái",
     address: "Ngõ 175 - Tổ 6 Đường Sùng Phái Sinh, Phường Điện Biên Phủ, Điện Biên",
-    image:
-      "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
+    image: "/collections/web/HLE09136.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Mừng cưới",
-
+    imagePosition: "0 20%",
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/vZ8EQJJL7TFHXUw36',
       "_blank"
@@ -197,10 +194,10 @@ export const EVENTS: TEvent[] = [
     time: "11h00 Chủ Nhật, ngày 02/06/2026",
     placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
     address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
-    image:
-      "https://images.pexels.com/photos/3843326/pexels-photo-3843326.jpeg",
+    image: "/collections/web/HLE09343.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Thêm vào lịch",
+    imagePosition: "0 30%",
 
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
@@ -225,8 +222,7 @@ export const EVENTS: TEvent[] = [
     time: "10h30 Chủ Nhật, ngày 02/06/2026",
     placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
     address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
-    image:
-      "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+    image: "/collections/web/HLE09246.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Mừng cưới",
 
