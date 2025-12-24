@@ -154,6 +154,7 @@ export const EVENTS: TEvent[] = [
     image: "/collections/web/HLE08922.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Thêm vào lịch",
+    imagePosition: "0 40%",
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/G1MjgcMdq8SkBski8',
       "_blank"
@@ -197,7 +198,7 @@ export const EVENTS: TEvent[] = [
     image: "/collections/web/HLE09343.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Thêm vào lịch",
-    imagePosition: "0 30%",
+    imagePosition: "0 26%",
 
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
@@ -225,7 +226,7 @@ export const EVENTS: TEvent[] = [
     image: "/collections/web/HLE09246.jpg",
     primaryBtn: "Xem chỉ đường",
     secondaryBtn: "Mừng cưới",
-
+    imagePosition: '0 45%',
     onPrimaryClick: () => window.open(
       'https://maps.app.goo.gl/pNfmtcPFxmA5torUA',
       "_blank"
