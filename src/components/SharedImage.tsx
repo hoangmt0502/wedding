@@ -17,6 +17,7 @@ export type SharedImageProps = {
   onClick?: () => void;
   className?: string;
   style?: React.CSSProperties;
+  imgStyle?: React.CSSProperties;
 };
 
 const defaultFallback =
@@ -38,6 +39,7 @@ export const SharedImage: React.FC<SharedImageProps> = ({
   onClick,
   className,
   style,
+  imgStyle
 }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -76,6 +78,7 @@ export const SharedImage: React.FC<SharedImageProps> = ({
     transition: "opacity .24s ease",
     opacity: loaded ? 1 : 0,
     display: "block",
+    ...imgStyle
   };
 
   const effectiveSrc = !error && src ? src : fallbackSrc;

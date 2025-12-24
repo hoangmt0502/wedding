@@ -136,12 +136,13 @@ export default function IntroSection() {
               textAlign: {xs: 'justify', sm: 'center'},
             }}
           >
-            Cảm ơn bạn đã dành tình cảm cho vợ chồng mình. Chúng mình biết các bạn đều đang rất bận, bận với công việc, với cuộc sống và với cả gia đình bạn.
+            Hành trình yêu thương của chúng mình sẽ trọn vẹn hơn rất nhiều khi có sự hiện diện của bạn – những người thân yêu và trân quý.
             {"\n"}{"\n"}
-            Nhưng thực sự sẽ rất tuyệt vời nếu như ngày Hạnh Phúc của chúng mình có thêm sự góp mặt của bạn và người thương. 
-            Vợ chồng mình rất hi vọng sẽ có mặt bạn trong ngày quan trọng này để chứng kiến và chia sẻ niềm hạnh phúc này cùng chúng mình.
+            Giữa những bộn bề của cuộc sống, sự sắp xếp thời gian và tấm lòng mà bạn dành cho vợ chồng mình luôn là điều vô cùng đáng quý.
             {"\n"}{"\n"}
-            Một lần nữa, chân thành cảm ơn tất cả các bạn 💗
+            Chúng mình mong rằng trong ngày Hạnh Phúc sắp tới, sẽ được đón bạn đến chung vui, chứng kiến khoảnh khắc ý nghĩa này và cùng chúng mình lưu giữ thêm những kỷ niệm thật đẹp.
+            {"\n"}{"\n"}
+            Chân thành cảm ơn và hẹn gặp bạn trong ngày trọng đại 💗
           </Typography>
         </motion.div>
 
@@ -162,7 +163,7 @@ export default function IntroSection() {
           >
             <Box
               component="img"
-              src="https://daknong.1cdn.vn/2025/07/25/1(1).jpg"
+              src="/images/introImage.png"
               alt="wedding"
               sx={{
                 width: {xs: "100%", sm: "80%"},

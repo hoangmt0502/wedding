@@ -35,14 +35,14 @@ interface TabItem {
 const PROFILES: ProfileItem[] = [
   {
     id: 1,
-    name: "Xuân Thịnh",
-    image: "https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg",
+    name: "Minh Hoàng",
+    image: "/collections/web-hq/HLE09478.jpg",
     text: `Xuất thân từ mảnh đất Nghệ An nhiều nắng gió. Lên Hà Nội học tập và làm việc từ năm 2012...`,
   },
   {
     id: 2,
-    name: "Diễm Hằng",
-    image: "https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527",
+    name: "Khánh Huyền",
+    image: "/collections/web-hq/HLE09469.jpg",
     text: `Hằng, một cô gái nhỏ xinh đến từ Bắc Giang...`,
   },
 ];
@@ -81,7 +81,7 @@ function HeaderTabs(props: {
       sx={{
         p: 2,
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${src}')`,
-        backgroundPosition: "0%",
+        backgroundPosition: "0",
         backgroundSize: "cover",
         mb: {xs: 2, sm: 4},
         mx: {xs: 1, sm: 0},
@@ -223,7 +223,7 @@ export default function ProfileSection() {
                     width: "100%",
                     display: "block",
                     borderRadius: isMobile ? 2 : 4,
-                    height: isMobile ? 500 : 700
+                    height: isMobile ? 500 : 700,
                   }}
                 />
               </motion.div>

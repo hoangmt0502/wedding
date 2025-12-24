@@ -153,7 +153,7 @@ export default function GroomBrideSection() {
           width: compactWidth,
           mx: "auto",
           borderRadius: {xs: 0, sm: 3},
-          backgroundImage: "url('https://daknong.1cdn.vn/2025/07/25/1(1).jpg')",
+          backgroundImage: "url('/collections/web-hq/HLE09246.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           overflow: "hidden",
@@ -213,7 +213,7 @@ export default function GroomBrideSection() {
               }}
             >
               <PersonCard
-                image="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474087zej/anh-chu-re-don-2k_013637758.jpg"
+                image="/collections/web/HLE09181.jpg"
                 name="Minh Hoàng"
                 father="Trần Quang Huy"
                 mother="Nguyễn Thị Vân"
@@ -233,7 +233,7 @@ export default function GroomBrideSection() {
               }}
             >
               <PersonCard
-                image="https://bizweb.dktcdn.net/100/368/426/products/set-vay-chup-anh-cuoi-ngoai-canh-jpeg.jpg?v=1703058721527"
+                image="/collections/web/HLE09064.jpg"
                 name="Khánh Huyền"
                 father="Nguyễn Trọng Nam"
                 mother="Nguyễn Thị Cúc"

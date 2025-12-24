@@ -24,19 +24,44 @@ export const PLAYLIST = [
 ];
 
 export const COLLECTION_LEFT = [
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://daknong.1cdn.vn/2025/07/25/1(1).jpg",
+  "/collections/web-hq/HLE08818.jpg",
+  "/collections/web-hq/HLE08783.jpg",
+  "/collections/web-hq/HLE09376.jpg",
+  "/collections/web-hq/HLE08875.jpg",
+  "/collections/web-hq/HLE09215.jpg",
+  "/collections/web-hq/HLE09147_cut.jpg",
 ]
 
 export const COLLECTION_RIGHT = [
-  "https://daknong.1cdn.vn/2025/07/25/1(1).jpg",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
-  "https://product.hstatic.net/200000054678/product/6_70ec2e65e933400c87271b223c275173.png",
+  "/collections/web-hq/HLE08843.jpg",
+  "/collections/web-hq/HLE09330.jpg",
+  "/collections/web-hq/HLE08767.jpg", 
+  "/collections/web-hq/HLE09136.jpg",
+]
+
+export const Full_COLLECTION = [
+  ...COLLECTION_LEFT,
+  ...COLLECTION_RIGHT,
+  "/collections/web-hq/HLE09163.jpg",
+  "/collections/web-hq/HLE09347.jpg",
+  "/collections/web-hq/HLE08900.jpg",
+  "/collections/web-hq/HLE08922.jpg",
+  "/collections/web-hq/HLE08966.jpg",
+  "/collections/web-hq/HLE09021.jpg",
+  "/collections/web-hq/HLE09064.jpg",
+  "/collections/web-hq/HLE09361.jpg",
+  "/collections/web-hq/HLE09088.jpg",
+  "/collections/web-hq/HLE09094.jpg",
+  "/collections/web-hq/HLE09129.jpg",
+  "/collections/web-hq/HLE09469.jpg",
+  "/collections/web-hq/HLE09181.jpg",
+  "/collections/web-hq/HLE09186.jpg",
+  "/collections/web-hq/HLE09246.jpg",
+  "/collections/web-hq/HLE09295.jpg",
+  "/collections/web-hq/HLE09334.jpg",
+  "/collections/web-hq/HLE09343.jpg",
+  "/collections/web-hq/HLE09397.jpg",
+  "/collections/web-hq/HLE09478.jpg"
 ]
 
 export const MAIN_COLOR = '#988465';

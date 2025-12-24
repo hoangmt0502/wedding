@@ -10,7 +10,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { COLLECTION_LEFT, COLLECTION_RIGHT, MAIN_COLOR } from "../../constants/common";
+import { COLLECTION_LEFT, COLLECTION_RIGHT, Full_COLLECTION, MAIN_COLOR } from "../../constants/common";
 import { useContentWidth } from "../../hooks/useContentWidth";
 import SharedImage from "../SharedImage";
 import { ExpandMore } from "@mui/icons-material";
@@ -18,8 +18,6 @@ import { useResponsive } from "../../hooks/useResponsive";
 
 // === ADD ===
 import { motion, Variants } from "framer-motion";
-
-const allImages = [...COLLECTION_LEFT, ...COLLECTION_RIGHT];
 
 const CollectionSection = () => {
   const [open, setOpen] = useState(false);
@@ -74,10 +72,10 @@ const CollectionSection = () => {
   const closeViewer = () => setOpen(false);
 
   const next = () =>
-    setCurrent((prev) => (prev + 1) % allImages.length);
+    setCurrent((prev) => (prev + 1) % Full_COLLECTION.length);
 
   const prev = () =>
-    setCurrent((prev) => (prev - 1 + allImages.length) % allImages.length);
+    setCurrent((prev) => (prev - 1 + Full_COLLECTION.length) % Full_COLLECTION.length);
 
   useEffect(() => {
     const el = thumbRefs.current[current];
@@ -234,7 +232,7 @@ const CollectionSection = () => {
 
             {/* Image */}
             <SharedImage
-              src={allImages[current]}
+              src={Full_COLLECTION[current]}
               alt="preview"
               variant="contain"
               width="90vw"
@@ -282,7 +280,7 @@ const CollectionSection = () => {
                 backdropFilter: "blur(6px)",
               }}
             >
-              {allImages.map((src, index) => {
+              {Full_COLLECTION.map((src, index) => {
                 const active = index === current;
 
                 return (
