@@ -192,7 +192,7 @@ export const EVENTS: TEvent[] = [
   {
     id: "groom-party",
     title: "Tiệc Cưới Nhà Trai",
-    time: "11h00 Chủ Nhật, ngày 02/06/2026",
+    time: "17h00 Thứ 4, ngày 14/01/2026",
     placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
     address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
     image: "/collections/web/HLE09343.jpg",
@@ -220,7 +220,7 @@ export const EVENTS: TEvent[] = [
   {
     id: "le-thanh-hon",
     title: "Lễ Thành Hôn",
-    time: "10h30 Chủ Nhật, ngày 02/06/2026",
+    time: "16h30 Thứ 4, ngày 14/01/2026",
     placeLabel: "Nhà văn hóa tổ 14, Đức Giang",
     address: "Số 72 ngõ 638 Ngô Gia Tự, Đức Giang, Long Biên, Hà Nội",
     image: "/collections/web/HLE09246.jpg",
