@@ -96,14 +96,14 @@ export default function StorySection() {
                 <SharedImage 
                   src="/images/story_icon.png" 
                   alt="decor" 
-                  width={isMobile ? 100 : 140}
-                  height={isMobile ? 50 : 70}
+                  width={100}
+                  height={50}
                   variant="cover" 
                 />
               </Box>
 
               <Typography
-                variant={isMobile ? 'h6' : 'h5'}
+                variant={'h6'}
                 align="center"
                 sx={{
                   fontFamily: "serif",
@@ -115,7 +115,7 @@ export default function StorySection() {
                 CHUYỆN CHÚNG MÌNH
               </Typography>
 
-              <Typography sx={{ color: "text.secondary", lineHeight: {xs: 1.5, sm: 1.8}, whiteSpace: 'pre-line' }} fontSize={{xs: 15, sm: 16}} textAlign={'justify'}>
+              <Typography sx={{ color: "text.secondary", lineHeight: {xs: 1.5, sm: 1.6}, whiteSpace: 'pre-line' }} fontSize={{xs: 15, sm: 16}} textAlign={'justify'}>
                 {"Chúng mình gặp nhau tại một câu lạc bộ cầu lông – nơi mọi thứ bắt đầu thật tình cờ và giản dị. Trong một buổi liên hoan nhỏ, Hoàng và Huyền có dịp trò chuyện, làm quen với nhau qua những câu chuyện rất đời thường. Không ai nghĩ rằng từ cuộc gặp gỡ ấy, sự đồng điệu lại dần nảy nở.\n\nNhững buổi đánh cầu cùng nhau, những tin nhắn hỏi han và những lần chia sẻ về những điều nhỏ bé trong cuộc sống đã đưa chúng mình đến gần nhau hơn. Sự quan tâm đến thật tự nhiên, nhẹ nhàng như một thói quen lúc nào không hay.\n\nTừ những điều bình dị ấy, chúng mình đã chọn nắm tay nhau, cùng bước tiếp trên hành trình mang tên hạnh phúc."}
               </Typography>
             </Paper>

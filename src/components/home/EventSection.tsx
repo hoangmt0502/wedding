@@ -36,10 +36,10 @@ const EventCard = ({ event }: any) => {
       <Box
         sx={{
           position: "absolute",
-          top: { xs: -44, sm: -70 },
+          top: { xs: -60, sm: -70 },
           right: { xs: 8, sm: 16 },
-          width: { xs: "42%", sm: 220 },
-          height: { xs: 80, sm: 140 },
+          width: { xs: "42%", sm: 220, md: 190 },
+          height: { xs: 100, sm: 140, md: 120 },
           borderRadius: 2,
           overflow: "hidden",
           boxShadow: "0 6px 26px rgba(0,0,0,0.35)",
