@@ -85,7 +85,7 @@ export default function StorySection() {
             <Paper
               elevation={4}
               sx={{
-                p: { xs: 2, md: 4 },
+                p: { xs: 2, md: 3 },
                 borderRadius: 2,
                 bgcolor: "white",
                 height: { xs: 'unset', md: 680 }
@@ -93,26 +93,30 @@ export default function StorySection() {
             >
               {/* Decor icon */}
               <Box sx={{ display: 'flex', justifyContent: "center", mb: 2 }}>
-                <SharedImage src="/images/story_icon.png" alt="decor" width={150} height={80} variant="cover" />
+                <SharedImage 
+                  src="/images/story_icon.png" 
+                  alt="decor" 
+                  width={100}
+                  height={50 }
+                  variant="cover" 
+                />
               </Box>
 
               <Typography
-                variant="h5"
+                variant={'h6'}
                 align="center"
                 sx={{
                   fontFamily: "serif",
                   fontWeight: 600,
                   letterSpacing: 2,
-                  mb: 3,
+                  mb: 2,
                 }}
               >
                 CHUYỆN CHÚNG MÌNH
               </Typography>
 
-              <Typography sx={{ color: "text.secondary", lineHeight: 1.8 }}>
-                Chúng mình quen nhau khi cùng làm việc ở công ty. Thịnh là cấp
-                trên, Hằng là cấp dưới. Thường xuyên phải tương tác với nhau, nên
-                cứ thế phát sinh tình cảm khi nào chả hay...
+              <Typography sx={{ color: "text.secondary", lineHeight: {xs: 1.5, sm: 1.8}, whiteSpace: 'pre-line' }} fontSize={{xs: 15, sm: 16}} textAlign={'justify'}>
+                {"Chúng mình gặp nhau tại một câu lạc bộ cầu lông – nơi mọi thứ bắt đầu thật tình cờ và giản dị. Trong một buổi liên hoan nhỏ của câu lạc bộ, Hoàng và Huyền có dịp trò chuyện, làm quen với nhau bằng những câu chuyện rất đời thường. Không ai nghĩ rằng, từ cuộc gặp gỡ ấy, hai trái tim lại dần tìm thấy sự đồng điệu.\nNhững buổi đánh cầu cùng nhau sau đó trở thành những khoảnh khắc đáng nhớ. Qua từng lần gặp gỡ, từng tin nhắn hỏi han, từng câu chuyện tâm sự về những điều nhỏ bé trong cuộc sống, khoảng cách giữa chúng mình dần được rút ngắn. Sự quan tâm đến nhau đến thật tự nhiên, nhẹ nhàng như một thói quen lúc nào không hay.\nKhông cần những lời hứa lớn lao, tình yêu của chúng mình được vun đắp từ sự chân thành, lắng nghe và sẻ chia. Và rồi, từ những điều bình dị ấy, chúng mình đã chọn nắm tay nhau, cùng bước tiếp trên hành trình mang tên hạnh phúc."}
               </Typography>
             </Paper>
           </motion.div>

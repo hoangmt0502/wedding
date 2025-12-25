@@ -37,13 +37,14 @@ const PROFILES: ProfileItem[] = [
     id: 1,
     name: "Minh Hoàng",
     image: "/collections/web-hq/HLE09478.jpg",
-    text: `Xuất thân từ mảnh đất Nghệ An nhiều nắng gió. Lên Hà Nội học tập và làm việc từ năm 2012...`,
+    text: "Sinh ra và lớn lên tại Hà Nội – nơi lưu giữ những giá trị truyền thống và nhịp sống hiện đại hòa quyện, Hoàng trưởng thành với sự điềm đạm, chân thành và tình yêu gia đình sâu sắc. Hoàng là người sống thật thà, biết quan tâm và luôn đặt trách nhiệm với gia đình lên hàng đầu.\n\nTrong công việc, Hoàng là một lập trình viên tận tâm, kiên trì và luôn nỗ lực hoàn thiện từng chi tiết nhỏ. Với Hoàng, hạnh phúc không đến từ những điều lớn lao, mà được xây dựng từ sự thấu hiểu, sẻ chia và đồng hành – để cùng người bạn đời vun đắp một mái ấm bình yên và bền vững theo năm tháng."
   },
   {
     id: 2,
     name: "Khánh Huyền",
     image: "/collections/web-hq/HLE09469.jpg",
-    text: `Hằng, một cô gái nhỏ xinh đến từ Bắc Giang...`,
+    text: `Huyền, một cô gái nhỏ xinh đến từ Điện Biên - vùng đất hiền hòa của núi rừng Tây Bắc, mang trong mình sự dịu dàng, chân thành và tình yêu gia đình sâu sắc. Là một cô gái ngoan ngoãn, hiếu thảo và luôn sống có trách nhiệm, Huyền trân trọng từng khoảnh khắc bình yên bên những người thân yêu.\n\nVới công việc là giáo viên tiếng Anh, Huyền yêu thích sự sẻ chia và niềm vui khi được đồng hành cùng học trò trên hành trình học tập. Đối với Huyền, hạnh phúc là những điều giản dị – là sự thấu hiểu, quan tâm và yêu thương đủ đầy, để cùng người bạn đời vun đắp nên một mái ấm ấm áp và bền lâu."
+`,
   },
 ];
 
@@ -277,8 +278,8 @@ export default function ProfileSection() {
                     <SharedImage
                       src="/images/story_icon.png"
                       alt="decor"
-                      width={150}
-                      height={80}
+                      width={isMobile ? 100 : 150}
+                      height={isMobile ? 50 : 80}
                       variant="cover"
                     />
                   </Box>
@@ -295,7 +296,7 @@ export default function ProfileSection() {
                     <Icon icon="mdi:flower" width={26} color="#c07b85" />
                     
                     <Typography
-                      variant="h4"
+                      variant={isMobile ? 'h5' : "h4"}
                       fontWeight={600}
                       sx={{
                         fontFamily: "'Playfair Display', serif",
@@ -318,8 +319,9 @@ export default function ProfileSection() {
                       lineHeight: 1.6,
                       textAlign: "justify",
                       color: "rgba(0,0,0,0.82)",
-                      fontSize: "1.08rem",
+                      fontSize: {xs: 16, sm: "1.08rem"},
                       fontFamily: "'Noto Serif', serif",
+                      whiteSpace: 'pre-line'
                     }}
                   >
                     {p.text}
