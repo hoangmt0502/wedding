@@ -66,7 +66,7 @@ export const Full_COLLECTION = [
 
 export const MAIN_COLOR = '#988465';
 
-export const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3A9zsmNt061hUORWNfKzM1r-zexDDCs915y4PWNbNeSawM0aQ5G8W2CRzpKTyi2gN/exec";
+export const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5xhWAeqe-n8IyiT8zxF16GshjQP8ISy26Iw-R_45Kewin_4xSqFQ-vURjwYbjRvcJ/exec";
 
 export const suggestions = [
   { message: "Chúc hai bạn trăm năm hạnh phúc, vạn điều bình an." },

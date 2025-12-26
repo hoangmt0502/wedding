@@ -15,6 +15,7 @@ import EventSection from "../components/home/EventSection";
 import WeddingGiftSection from "../components/home/WeddingGiftSection";
 import GuestBookSection from "../components/home/GuestBookSection";
 import EndingSection from "../components/home/EndingSection";
+import RSVPSection from "../components/home/RSVPSection";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <EventSection />
         <WeddingGiftSection />
         <GuestBookSection />
+        <RSVPSection />
         <EndingSection />
       </Box>
       <WeddingFallingImages

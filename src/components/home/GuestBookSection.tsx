@@ -198,7 +198,7 @@ export default function GuestBookSection() {
         open={success}
         autoHideDuration={5000}
         onClose={() => setSuccess(false)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}   // 👈 Đặt dưới
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         ContentProps={{
           sx: {
             background: "linear-gradient(135deg, #ff9ab6 0%, #ffc8d8 100%)", // 🌸 pastel hồng
