@@ -19,6 +19,7 @@ const PersonCard = ({ image, name, father, mother, address, nameType }: any) => 
       p: {xs: 0, sm: 3},
       textAlign: "center",
       transition: "0.35s",
+      height: '100%',
       "&:hover": {
         transform: {xs: "none", sm: "translateY(-6px)"},
         boxShadow: {xs: "none", sm: "0 0 35px rgba(0,0,0,0.16)"},
@@ -206,7 +207,7 @@ export default function GroomBrideSection() {
               variants={slideLeft}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-160px" }}
+              viewport={{ once: true, margin: "-130px" }}
               component={motion.div}
               sx={{
                 width: {xs: "50%", md: '40%'}
@@ -226,7 +227,7 @@ export default function GroomBrideSection() {
               variants={slideRight}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-160px" }}
+              viewport={{ once: true, margin: "-130px" }}
               component={motion.div}
               sx={{
                 width: {xs: "50%", md: '40%'}

@@ -226,6 +226,7 @@ export default function ProfileSection() {
                     borderRadius: isMobile ? 2 : 4,
                     height: isMobile ? 500 : 700,
                   }}
+                  imgStyle={{objectPosition: '0 30%'}}
                 />
               </motion.div>
             </Grid>

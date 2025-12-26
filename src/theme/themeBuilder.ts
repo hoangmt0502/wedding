@@ -39,6 +39,15 @@ const themeBuilder = (
   }
 
   return createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,     // phone
+        sm: 768,   // tablet
+        md: 1024,  // small laptop
+        lg: 1280,  // desktop
+        xl: 1600,  // wide screen
+      },
+    },
     palette: {
       mode: resolvedMode,
       ...muiPalette,

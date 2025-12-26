@@ -35,9 +35,9 @@ export default function WeddingGiftSection() {
             sx={{
               position: "relative",
               textAlign: "center",
-              px: 2,
+              px: 1,
               color: "#fff",
-              mt: {xs: 8, md: 0}
+              mt: {xs: 12, md: 0}
             }}
           >
             <Typography
@@ -55,10 +55,11 @@ export default function WeddingGiftSection() {
               sx={{
                 fontSize: {xs: 14, sm: 18},
                 opacity: 0.85,
-                mb: 5,
+                mb: {xs: 3, sm: 5},
+                whiteSpace: 'pre-line'
               }}
             >
-              Cảm ơn tất cả các tình cảm mà mọi người đã dành cho Hoàng & Huyền
+              {"Cảm ơn tất cả tình cảm mà mọi người đã dành cho\nHoàng & Huyền"}
             </Typography>
 
             {/* Nút mở modal */}
