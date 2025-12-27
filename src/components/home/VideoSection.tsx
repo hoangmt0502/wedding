@@ -130,7 +130,7 @@ export default function VideoSection() {
         >
           <Box p={2}>
             <ReactPlayer
-              src="https://www.youtube.com/watch?v=lY2yjAdbvdQ"
+              src="https://www.youtube.com/watch?v=8XotDBXNNzE"
               playing={open}
               controls
               width="100%"
