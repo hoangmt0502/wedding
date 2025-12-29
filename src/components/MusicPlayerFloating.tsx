@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
 import { PLAYLIST } from "../constants/common";
+import { createPortal } from "react-dom";
 
 const globalStyles = `
 @keyframes rotateMusic {
@@ -94,7 +95,7 @@ export default function MusicPlayerFloating() {
     }
   };
 
-  return (
+  return createPortal(
     <>
       <style>{globalStyles}</style>
 
@@ -171,6 +172,7 @@ export default function MusicPlayerFloating() {
       </Box>
 
       <audio ref={audioRef} loop={false} playsInline />
-    </>
+    </>,
+    document.body
   );
 }

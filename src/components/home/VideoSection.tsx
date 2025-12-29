@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, IconButton, Typography, Dialog } from "@mui/material";
+import { Box, IconButton, Typography, Dialog, Tooltip } from "@mui/material";
 import ImageWrapper from "./ImageWrapper";
 import { PlayCircleOutline } from "@mui/icons-material";
 import ReactPlayer from "react-player";
@@ -118,25 +118,71 @@ export default function VideoSection() {
       {/* ===== MODAL VIDEO ===== */}
       <Dialog
         open={open}
-        onClose={() => setOpen(false)}
-        maxWidth="lg"
+        onClose={(_, reason) => {
+          // if (reason === "backdropClick" || reason === "escapeKeyDown") return;
+          setOpen(false);
+        }}
+        disableEscapeKeyDown
+        maxWidth="xl"
         fullWidth
-        PaperProps={{ sx: { background: "transparent", boxShadow: "none" } }}
+        BackdropProps={{
+          sx: {
+            backgroundColor: "rgba(0,0,0,0.85)", // 👈 nền tối sạch
+          },
+        }}
+        PaperProps={{
+          sx: {
+            background: "#000",      // 👈 cắt toàn bộ overlay
+            boxShadow: "none",
+            borderRadius: 3,
+            overflow: "hidden",
+          },
+        }}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
         >
-          <Box p={2}>
-            <ReactPlayer
-              src="https://www.youtube.com/watch?v=8XotDBXNNzE"
-              playing={open}
-              controls
-              width="100%"
-              height="70vh"
-              style={{ borderRadius: 12, overflow: "hidden" }}
-            />
+          <Box position="relative">
+            {/* Close */}
+            <Tooltip title="Đóng">
+              <IconButton
+                onClick={() => setOpen(false)}
+                sx={{
+                  position: "absolute",
+                  top: 12,
+                  right: 12,
+                  zIndex: 10,
+                  color: "#fff",
+                  background: "rgba(0,0,0,0.6)",
+                  "&:hover": { background: "rgba(0,0,0,0.85)" },
+                }}
+              >
+                ✕
+              </IconButton>
+            </Tooltip>
+
+            {/* IMAGE / VIDEO */}
+            <Box
+              sx={{
+                width: "100%",
+                height: "80vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#000",
+              }}
+            >
+              <ReactPlayer
+                src="https://www.youtube.com/watch?v=8XotDBXNNzE"
+                playing={open}
+                controls
+                width="100%"
+                height="70vh"
+                style={{ borderRadius: 12, overflow: "hidden" }}
+              />
+            </Box>
           </Box>
         </motion.div>
       </Dialog>
