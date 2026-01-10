@@ -107,7 +107,7 @@ export default function WeddingGiftSection() {
           title: "Nhà Trai",
           qr: "/images/qr_hoang.jpg",
           bank: "BIDV",
-          account: "03972225122",
+          account: "0397225122",
           owner: "TRAN MINH HOANG",
         }}
         bride={{
